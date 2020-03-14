@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="209dp"
+        android:layout_height="56dp"
+        android:text="@string/btn_auth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="65dp" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="209dp"
+        android:layout_height="56dp"
+        android:text="Выход"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="583dp" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="209dp"
+        android:layout_height="56dp"
+        android:text="Достижения"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="492dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="209dp"
+        android:layout_height="56dp"
+        android:text="Настройки"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="405dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="209dp"
+        android:layout_height="56dp"
+        android:text="Сетевая игра"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="321dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="209dp"
+        android:layout_height="56dp"
+        android:text="Игра на двоих"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="234dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="209dp"
+        android:layout_height="56dp"
+        android:text="@string/btn_1game"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="149dp" />
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
