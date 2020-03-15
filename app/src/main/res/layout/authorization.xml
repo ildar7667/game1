@@ -4,61 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="20dp"
+    >
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="210dp"
-        android:layout_height="37dp"
-        android:text=""
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="235dp"
-        tools:text="Пароль" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="212dp"
-        android:layout_height="35dp"
-        android:text=""
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="104dp"
-        tools:text="Логин" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="139dp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="272dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
 
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="109dp"
-        android:layout_height="45dp"
-        android:text="Войти"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="383dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="104dp"
-        android:layout_height="47dp"
-        android:text="Выйти"
-        tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="383dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_login"/>
+
+                <EditText
+                    android:id="@+id/etLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="login"
+                    android:hint="@string/text_login"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_login"/>
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="login"
+                    android:hint="@string/text_password"
+                    android:inputType="textPassword"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_auth" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
