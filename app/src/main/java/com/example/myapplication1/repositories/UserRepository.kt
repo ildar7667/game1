@@ -6,8 +6,9 @@ class UserRepository {
         subscriber.invoke("$login : $pass")
     }
 
-    fun game1(){
-       // showError ("Одиночная игра")
+    fun game1(subscriber: (String) -> Unit, a: String){
+        subscriber.invoke(a)
+        //showError ("Одиночная игра")
     }
 
 }

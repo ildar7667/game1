@@ -1,5 +1,6 @@
 package com.example.myapplication1.presentation.starting
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.myapplication1.R
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.starting.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication1.MainActivity
 
 
 class StartingFragment : MvpAppCompatFragment(), IStartingView {
@@ -33,9 +35,6 @@ class StartingFragment : MvpAppCompatFragment(), IStartingView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
 
-        //button_auth.setOnClickListener {
-        //    presenter.registration("${etLogin.text}", "${etPassword.text}")
-        //}
 
         //кнопка "Выход"
         btn_exit.setOnClickListener{
@@ -49,10 +48,12 @@ class StartingFragment : MvpAppCompatFragment(), IStartingView {
 
         button_auth.setOnClickListener() {
             showError ("Авторизация")
+
+
         }
 
         btn_1game.setOnClickListener() {
-            presenter.game1()
+            presenter.game1("Одиночная игра")
         }
 
         btn_2game.setOnClickListener() {

@@ -4,27 +4,17 @@ import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.example.myapplication1.repositories.UserRepository
 
+@InjectViewState
 class StartingPresenter : MvpPresenter<IStartingView>() {
     //    @Inject
     var userRepository: UserRepository = UserRepository()
 
-    fun registration(login: String, pass: String) {
 
-        // показать диалог блокировки
+    fun game1(a: String) {
+        userRepository.game1({
 
-        userRepository.registration({
-
-            // дилог блокировки убрать
-
-            // Тут будет ответ
-            // Если ОК, то отправляем на гл. экран
-            // иначе показываем сообщение об ошибки
             viewState.showError(it)
 
-        }, login, pass)
-    }
-
-    fun game1 (){
-        userRepository.game1()
+        }, a)
     }
 }
