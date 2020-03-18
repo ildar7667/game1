@@ -3,5 +3,5 @@ import com.arellomobile.mvp.MvpView
 
 interface IStartingView : MvpView {
 
-    fun showError(message: String)
+      fun showError(message: String)
 }

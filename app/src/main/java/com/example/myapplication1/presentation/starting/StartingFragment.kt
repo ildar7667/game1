@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication1.MainActivity
 
 
+
 class StartingFragment : MvpAppCompatFragment(), IStartingView {
 
     @InjectPresenter
@@ -48,6 +49,7 @@ class StartingFragment : MvpAppCompatFragment(), IStartingView {
 
         button_auth.setOnClickListener() {
             showError ("Авторизация")
+
 
 
         }
