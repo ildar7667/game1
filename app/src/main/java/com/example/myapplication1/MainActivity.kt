@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.btn_exit
 import kotlinx.android.synthetic.main.activity_main.button_auth
 import kotlinx.android.synthetic.main.starting.*
+import kotlinx.android.synthetic.main.activity_main.btn_1game
 
 
 class MainActivity : AppCompatActivity() {
@@ -56,19 +57,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btn_1game.setOnClickListener(){
+            val intent = Intent(this, game1::class.java)
+            startActivity(intent)
+        }
+
         btn_exit.setOnClickListener{
             System.exit(-1)
         }
     }
-
-  //  button_auth.setOnClickListener() {
-
-   // }
-   /* button_auth.setOnClickListener {
-        val intent = Intent(context, Activity_Auth::class.java)
-        startActivity(intent) }
-*/
-
 
 
 }
