@@ -1,8 +1,9 @@
-package com.example.myapplication1.presentation.starting
+package com.example.myapplication1.presentation.Authorization
 
 import com.example.myapplication1.repositories.UserRepository
 import com.arellomobile.mvp.MvpPresenter
 import com.arellomobile.mvp.InjectViewState
+import com.example.myapplication1.presentation.starting.IAuthorizationView
 
 @InjectViewState
 class AuthorizationPresenter : MvpPresenter<IAuthorizationView>() {

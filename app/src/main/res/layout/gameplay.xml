@@ -19,21 +19,43 @@
         tools:layout_editor_absoluteX="111dp"
         tools:layout_editor_absoluteY="26dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/gam2"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="117dp" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/pol"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="423dp" />
 
+    <TableLayout
+        android:layout_width="375dp"
+        android:layout_height="377dp"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="295dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+        <TextView android:textColor="#fff"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:background="#cccccc"
+            android:text="Ячейка"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView android:textColor="#fff"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:background="#cccccc"
+                android:text="Ячейка"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

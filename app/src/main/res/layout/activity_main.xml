@@ -23,7 +23,7 @@
                 android:id="@+id/button_auth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_auth"
+                android:text="@string/btn_authoriz"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="65dp" />

@@ -2,21 +2,9 @@ package com.example.myapplication1
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import android.app.Activity
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
-import com.example.myapplication1.presentation.starting.AuthorizationFragment
-import com.example.myapplication1.presentation.starting.IStartingView
-import com.example.myapplication1.presentation.starting.StartingFragment
-import com.example.myapplication1.presentation.starting.StartingPresenter
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.btn_exit
 import kotlinx.android.synthetic.main.activity_main.button_auth
-import kotlinx.android.synthetic.main.starting.*
 import kotlinx.android.synthetic.main.activity_main.btn_1game
 
 

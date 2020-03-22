@@ -2,7 +2,7 @@ package com.example.myapplication1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myapplication1.presentation.starting.AuthorizationFragment
+import com.example.myapplication1.presentation.Authorization.AuthorizationFragment
 
 
 class Activity_Auth : AppCompatActivity()  {
@@ -13,7 +13,11 @@ class Activity_Auth : AppCompatActivity()  {
 
         val ft =
             supportFragmentManager.beginTransaction()
-         ft.add(R.id.container_auth, AuthorizationFragment())
+         ft.add(R.id.container_auth,
+             AuthorizationFragment()
+         )
          ft.commit()
     }
+
+
 }

@@ -2,9 +2,8 @@ package com.example.myapplication1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myapplication1.presentation.starting.AuthorizationFragment
 
-import com.example.myapplication1.presentation.starting.Game1Fragment
+import com.example.myapplication1.presentation.GameOffline.Game1Fragment
 
 
 class game1 : AppCompatActivity() {
@@ -15,7 +14,9 @@ class game1 : AppCompatActivity() {
 
         val ft =
             supportFragmentManager.beginTransaction()
-        ft.add(R.id.container_game1, Game1Fragment())
+        ft.add(R.id.container_game1,
+            Game1Fragment()
+        )
         ft.commit()
     }
 }

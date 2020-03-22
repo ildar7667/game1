@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Морской бой</string>
-    <string name="btn_auth">Авторизоваться</string>
+    <string name="btn_auth">Войти в аккаунт</string>
     <string name="btn_1game">Одиночная игра</string>
     <string name="btn_2game">Игра на двоих</string>
     <string name="btn_lan">Сетевая игра</string>
@@ -9,4 +9,7 @@
     <string name="btn_exit">Выход</string>
     <string name="text_login">Логин</string>
     <string name="text_password">Пароль</string>
+    <string name="btn_reg">Регистрация</string>
+    <string name="btn_logof">Выйти из аккаунта</string>
+    <string name="btn_authoriz">Авторизоваться</string>
 </resources>
