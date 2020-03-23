@@ -9,8 +9,8 @@ import com.example.myapplication1.R
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import kotlinx.android.synthetic.main.authorization.*
 import com.example.myapplication1.presentation.starting.IAuthorizationView
+import kotlinx.android.synthetic.main.authorization.*
 
 class AuthorizationFragment: MvpAppCompatFragment(),
     IAuthorizationView {
