@@ -1,4 +1,4 @@
-package com.example.myapplication1.presentation.Base
+package com.example.myapplication1.Base
 
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter

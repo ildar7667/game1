@@ -1,4 +1,4 @@
-package com.example.myapplication1.presentation.Base
+package com.example.myapplication1.Base
 import java.lang.reflect.ParameterizedType
 
 abstract class ABaseRestApi<S> : IRestApi {

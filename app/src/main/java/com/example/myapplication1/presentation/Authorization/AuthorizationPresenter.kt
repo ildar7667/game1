@@ -1,29 +1,32 @@
 package com.example.myapplication1.presentation.Authorization
 
-import com.example.myapplication1.repositories.UserRepository
+import com.example.myapplication1.domain.repositories.UserRepository
 import com.arellomobile.mvp.MvpPresenter
 import com.arellomobile.mvp.InjectViewState
 import com.example.myapplication1.presentation.starting.IAuthorizationView
+import javax.inject.Inject
 
 @InjectViewState
-class AuthorizationPresenter : MvpPresenter<IAuthorizationView>() {
+class AuthorizationPresenter : MvpPresenter<IAuthView>() {
 
-    //    @Inject
-    var userRepository: UserRepository = UserRepository()
 
-    fun registration(login: String, pass: String) {
+    @Inject
+    lateinit var userRepository: UserRepository
 
-        // показать диалог блокировки
+    @Inject
+    constructor()
 
-        userRepository.registration({
+    fun auth(login: String, password: String) {
 
-            // дилог блокировки убрать
+        userRepository.login(SubRX { _, e ->
 
-            // Тут будет ответ
-            // Если ОК, то отправляем на гл. экран
-            // иначе показываем сообщение об ошибки
-            viewState.showError(it)
+            if (e != null) {
+                e.printStackTrace()
+                viewState.onError(e.localizedMessage)
+                return@SubRX
+            }
 
-        }, login, pass)
+            MainActivity.show()
+        }, login, password)
     }
 }

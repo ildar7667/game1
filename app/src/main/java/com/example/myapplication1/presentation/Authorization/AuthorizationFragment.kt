@@ -9,18 +9,26 @@ import com.example.myapplication1.R
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.example.myapplication1.Base.ABaseFragment
 import com.example.myapplication1.presentation.starting.IAuthorizationView
 import kotlinx.android.synthetic.main.authorization.*
+import javax.inject.Inject
+import com.example.myapplication1.domain.di.components.DaggerAppComponent
 
-class AuthorizationFragment: MvpAppCompatFragment(),
-    IAuthorizationView {
 
+class AuthorizationFragment: ABaseFragment(), IAuthView {
+
+    @Inject
     @InjectPresenter
     lateinit var presenter: AuthorizationPresenter
 
     @ProvidePresenter
     fun providePresenter() =
         AuthorizationPresenter()
+
+    override fun inject() {
+        DaggerAppComponent.create().inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
