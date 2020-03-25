@@ -6,11 +6,24 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.btn_exit
 import kotlinx.android.synthetic.main.activity_main.button_auth
 import kotlinx.android.synthetic.main.activity_main.btn_1game
+import com.example.myapplication1.presentation.App
+import com.example.myapplication1.R
+import com.example.myapplication1.Activity_Auth
 
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
 
+        fun show() {
+            App.appContext.let {
+                it.startActivity(Intent(it, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                })
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,13 +54,15 @@ class MainActivity : AppCompatActivity() {
         /*запуск через новое активити*/
 
         button_auth.setOnClickListener() {
-            val intent = Intent(this, Activity_Auth::class.java)
-            startActivity(intent)
+            Activity_Auth.show()
+          //  val intent = Intent(this, Activity_Auth::class.java)
+         //   startActivity(intent)
         }
 
         btn_1game.setOnClickListener(){
-            val intent = Intent(this, game1::class.java)
-            startActivity(intent)
+      //   game1.show()
+                        //   val intent = Intent(this, game1::class.java)
+           // startActivity(intent)
         }
 
         btn_exit.setOnClickListener{

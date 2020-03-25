@@ -10,13 +10,14 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.myapplication1.Base.ABaseFragment
+import com.example.myapplication1.domain.di.components.DaggerAppComponent
 import com.example.myapplication1.presentation.starting.IAuthorizationView
 import kotlinx.android.synthetic.main.authorization.*
 import javax.inject.Inject
-import com.example.myapplication1.domain.di.components.DaggerAppComponent
 
 
-class AuthorizationFragment: ABaseFragment(), IAuthView {
+
+class AuthorizationFragment: ABaseFragment(), IAuthorizationView{
 
     @Inject
     @InjectPresenter
@@ -30,19 +31,25 @@ class AuthorizationFragment: ABaseFragment(), IAuthView {
         DaggerAppComponent.create().inject(this)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.authorization, container, false)
-    }
+    override fun getViewId() = R.layout.authorization
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         btnLogin.setOnClickListener {
-            presenter.registration("${etLogin.text}", "${etPassword.text}")
+
+            val login = "${etLogin.text}" // "null"
+            val password = "${etPassword.text}"
+
+            if (login.isEmpty() || password.isEmpty()) {
+                toast(R.string.error_login_passwd_undefined)
+                return@setOnClickListener
+            }
+
+            presenter.auth(login, password)
+
+
             btnlogof.isEnabled = true
             btnLogin.isEnabled = false
         }
@@ -56,8 +63,18 @@ class AuthorizationFragment: ABaseFragment(), IAuthView {
         }
     }
 
-    override fun showError(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+
+    override fun lock() {
+      //  visibility(flBtnContainer)
+    }
+
+    override fun unlock() {
+     //   visibility(flBtnContainer, false)
+    }
+
+    override fun onSuccess() {
+        toast("SUCCESS")
+        // Отправить на главную форму
     }
 
 

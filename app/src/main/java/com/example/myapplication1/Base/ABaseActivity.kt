@@ -1,10 +1,11 @@
 package com.example.myapplication1.Base
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.myapplication1.R
 
+
 abstract class ABaseActivity : AppCompatActivity() {
+
     fun replace(fragment: Fragment, backStack: String? = null, tag: String? = null) {
 
         supportFragmentManager.beginTransaction()
@@ -12,6 +13,5 @@ abstract class ABaseActivity : AppCompatActivity() {
                 backStack?.let { addToBackStack(it) }
             }
             .commit()
-
     }
 }

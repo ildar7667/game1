@@ -12,4 +12,5 @@
     <string name="btn_reg">Регистрация</string>
     <string name="btn_logof">Выйти из аккаунта</string>
     <string name="btn_authoriz">Авторизоваться</string>
+    <string name="error_login_passwd_undefined">Поле логин или пароль не определены</string>
 </resources>

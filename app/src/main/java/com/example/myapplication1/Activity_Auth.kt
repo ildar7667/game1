@@ -7,9 +7,9 @@ import android.text.TextUtils.replace
 import com.example.myapplication1.domain.repositories.local.UserStorage
 import com.example.myapplication1.presentation.App
 import com.example.myapplication1.presentation.Authorization.AuthorizationFragment
+import com.example.myapplication1.Base.ABaseActivity
 
-
-class Activity_Auth : AppCompatActivity(), IActivity_Auth {
+class Activity_Auth : ABaseActivity(), IActivity_Auth {
 
     companion object {
 
@@ -17,7 +17,7 @@ class Activity_Auth : AppCompatActivity(), IActivity_Auth {
 
         fun show() {
             App.appContext.let {
-                it.startActivity(Intent(it, IActivity_Auth::class.java).apply {
+                it.startActivity(Intent(it, Activity_Auth::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     putExtra(ARG_DROP_CREDENTIALS, true)
                 })
@@ -37,19 +37,16 @@ class Activity_Auth : AppCompatActivity(), IActivity_Auth {
             showAuth()
             return
         }
+
+
     }
-/*
-        val ft =
-            supportFragmentManager.beginTransaction()
-         ft.add(R.id.container_auth,
-             AuthorizationFragment()
-         )
-         ft.commit()
-    }*/
 
-        override fun showAuth() {
-            replace(AuthorizationFragment())
-        }
 
+
+
+
+    override fun showAuth() {
+        replace(AuthorizationFragment())
+    }
     }
 

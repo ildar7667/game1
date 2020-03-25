@@ -1,7 +1,7 @@
 package com.example.myapplication1.presentation.starting
-import com.arellomobile.mvp.MvpView
+import com.example.myapplication1.Base.IBaseView
 
-interface IAuthorizationView : MvpView {
+interface IAuthorizationView : IBaseView {
 
-    fun showError(message: String)
+    fun onSuccess()
 }
