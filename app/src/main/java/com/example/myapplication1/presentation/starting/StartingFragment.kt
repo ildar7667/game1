@@ -13,7 +13,7 @@ import com.example.myapplication1.R
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.starting.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication1.Activity_Auth
+import com.example.myapplication1.ActivityAuth
 import com.example.myapplication1.MainActivity
 
 

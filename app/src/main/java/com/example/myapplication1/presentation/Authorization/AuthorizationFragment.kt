@@ -50,17 +50,19 @@ class AuthorizationFragment: ABaseFragment(), IAuthorizationView{
             presenter.auth(login, password)
 
 
-            btnlogof.isEnabled = true
-            btnLogin.isEnabled = false
+          //  btnlogof.isEnabled = true
+           // btnLogin.isEnabled = false
         }
 
-
-        btnlogof.isEnabled  = false
-
-        btnlogof.setOnClickListener{
-            btnlogof.isEnabled = false
-            btnLogin.isEnabled = true
+        btnreg.setOnClickListener{
+            presenter.registration("${etLogin.text}", "${etPassword.text}")
         }
+      //  btnlogof.isEnabled  = false
+
+      //  btnlogof.setOnClickListener{
+          //  btnlogof.isEnabled = false
+          //  btnLogin.isEnabled = true
+      //  }
     }
 
 

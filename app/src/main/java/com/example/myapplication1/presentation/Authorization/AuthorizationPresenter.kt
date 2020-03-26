@@ -1,8 +1,11 @@
 package com.example.myapplication1.presentation.Authorization
 
+import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
 import com.example.myapplication1.domain.repositories.UserRepository
 import com.arellomobile.mvp.MvpPresenter
 import com.arellomobile.mvp.InjectViewState
+import com.example.myapplication1.ActivityAuth
 import com.example.myapplication1.Base.SubRX
 import com.example.myapplication1.MainActivity
 import com.example.myapplication1.presentation.starting.IAuthorizationView
@@ -33,5 +36,22 @@ class AuthorizationPresenter : MvpPresenter<IAuthorizationView> {
 
             MainActivity.show()
         }, login, password)
+    }
+
+    fun registration(login: String, pass: String) {
+
+        viewState.lock()
+        userRepository.registration(SubRX { _, e ->
+            viewState.unlock()
+
+            if (e != null) {
+                e.printStackTrace()
+                viewState.onError(e.localizedMessage)
+                return@SubRX
+            }
+
+            MainActivity.show()
+
+        }, login, pass)
     }
 }

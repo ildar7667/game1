@@ -9,7 +9,7 @@ import com.example.myapplication1.presentation.App
 import com.example.myapplication1.presentation.Authorization.AuthorizationFragment
 import com.example.myapplication1.Base.ABaseActivity
 
-class Activity_Auth : ABaseActivity(), IActivity_Auth {
+class ActivityAuth : ABaseActivity(), IActivity_Auth {
 
     companion object {
 
@@ -17,7 +17,7 @@ class Activity_Auth : ABaseActivity(), IActivity_Auth {
 
         fun show() {
             App.appContext.let {
-                it.startActivity(Intent(it, Activity_Auth::class.java).apply {
+                it.startActivity(Intent(it, ActivityAuth::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     putExtra(ARG_DROP_CREDENTIALS, true)
                 })
@@ -29,8 +29,9 @@ class Activity_Auth : ABaseActivity(), IActivity_Auth {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        if (savedInstanceState != null)
+       if (savedInstanceState != null)
             return
+
 
         if (intent.getBooleanExtra(ARG_DROP_CREDENTIALS, false)) {
             UserStorage().dropCredentials()
@@ -38,15 +39,22 @@ class Activity_Auth : ABaseActivity(), IActivity_Auth {
             return
         }
 
+        //   запуск через фрагмент
 
+             val ft =
+                       supportFragmentManager.beginTransaction()
+
+                   ft.add(R.id.container_auth, AuthorizationFragment())
+                  // ft.addToBackStack(null)
+               ft.commit()
+       // showAuth()
     }
-
-
-
 
 
     override fun showAuth() {
         replace(AuthorizationFragment())
     }
+
+
     }
 

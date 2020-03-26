@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_main.button_auth
 import kotlinx.android.synthetic.main.activity_main.btn_1game
 import com.example.myapplication1.presentation.App
 import com.example.myapplication1.R
-import com.example.myapplication1.Activity_Auth
+import com.example.myapplication1.ActivityAuth
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -54,9 +54,9 @@ class MainActivity : AppCompatActivity() {
         /*запуск через новое активити*/
 
         button_auth.setOnClickListener() {
-            Activity_Auth.show()
-          //  val intent = Intent(this, Activity_Auth::class.java)
-         //   startActivity(intent)
+          // ActivityAuth.show()
+            val intent = Intent(this, ActivityAuth::class.java)
+          startActivity(intent)
         }
 
         btn_1game.setOnClickListener(){

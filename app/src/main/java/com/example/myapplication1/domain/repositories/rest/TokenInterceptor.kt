@@ -1,7 +1,7 @@
 package com.example.myapplication1.domain.repositories.rest
 
 import android.util.Log
-import com.example.myapplication1.Activity_Auth
+import com.example.myapplication1.ActivityAuth
 import com.example.myapplication1.domain.di.models.Token
 import com.example.myapplication1.domain.repositories.UserRepository
 import com.example.myapplication1.exceptions.AuthException
@@ -36,7 +36,7 @@ class TokenInterceptor : Interceptor {
 
         var token = userRepository.getUser()?.token
         if (token == null) {
-            Activity_Auth.show()
+            ActivityAuth.show()
             throw AuthException("Auth is NULL")
         }
 
@@ -51,7 +51,7 @@ class TokenInterceptor : Interceptor {
 
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    Activity_Auth.show()
+                    ActivityAuth.show()
                     throw AuthException("Fail refresh auth")
                 } finally {
                     lock.unlock()
@@ -64,7 +64,7 @@ class TokenInterceptor : Interceptor {
 
                 token = userRepository.getUser()?.token
                 if (token == null) {
-                    Activity_Auth.show()
+                    ActivityAuth.show()
                     throw AuthException("Auth is NULL")
                 }
 
