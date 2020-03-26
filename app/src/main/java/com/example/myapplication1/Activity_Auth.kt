@@ -40,14 +40,14 @@ class ActivityAuth : ABaseActivity(), IActivity_Auth {
         }
 
         //   запуск через фрагмент
-
+/*
              val ft =
                        supportFragmentManager.beginTransaction()
 
                    ft.add(R.id.container_auth, AuthorizationFragment())
                   // ft.addToBackStack(null)
-               ft.commit()
-       // showAuth()
+               ft.commit()*/
+        showAuth()
     }
 
 

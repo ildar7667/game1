@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if (savedInstanceState != null)
+            return
 
         /*   запуск через фрагмент
 
@@ -54,9 +56,9 @@ class MainActivity : AppCompatActivity() {
         /*запуск через новое активити*/
 
         button_auth.setOnClickListener() {
-          // ActivityAuth.show()
-            val intent = Intent(this, ActivityAuth::class.java)
-          startActivity(intent)
+           ActivityAuth.show()
+         //   val intent = Intent(this, ActivityAuth::class.java)
+        //  startActivity(intent)
         }
 
         btn_1game.setOnClickListener(){

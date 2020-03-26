@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_Auth"
-    android:id="@+id/container_auth">
+    tools:context=".ActivityAuth"
+    android:id="@+id/container">
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
