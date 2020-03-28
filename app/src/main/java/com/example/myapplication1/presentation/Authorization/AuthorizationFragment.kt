@@ -10,6 +10,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.myapplication1.Base.ABaseFragment
+import com.example.myapplication1.MainActivity
 import com.example.myapplication1.domain.di.components.DaggerAppComponent
 import com.example.myapplication1.presentation.starting.IAuthorizationView
 import kotlinx.android.synthetic.main.authorization.*
@@ -19,17 +20,17 @@ import javax.inject.Inject
 
 class AuthorizationFragment: ABaseFragment(), IAuthorizationView{
 
-    @Inject
-    @InjectPresenter
-    lateinit var presenter: AuthorizationPresenter
 
-    @ProvidePresenter
-    fun providePresenter() =
-        AuthorizationPresenter()
+        @Inject
+        @InjectPresenter
+        lateinit var presenter: AuthorizationPresenter
 
-    override fun inject() {
-        DaggerAppComponent.create().inject(this)
-    }
+        @ProvidePresenter
+        fun providePresenter() = presenter
+
+        override fun inject() {
+            DaggerAppComponent.create().inject(this)
+        }
 
     override fun getViewId() = R.layout.authorization
 
@@ -63,6 +64,10 @@ class AuthorizationFragment: ABaseFragment(), IAuthorizationView{
           //  btnlogof.isEnabled = false
           //  btnLogin.isEnabled = true
       //  }
+
+        btnlogof.setOnClickListener{
+            MainActivity.show()
+        }
     }
 
 

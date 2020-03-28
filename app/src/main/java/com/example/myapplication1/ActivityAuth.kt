@@ -29,7 +29,7 @@ class ActivityAuth : ABaseActivity(), IActivity_Auth {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-       if (savedInstanceState != null)
+        if (savedInstanceState != null)
             return
 
 
@@ -56,5 +56,5 @@ class ActivityAuth : ABaseActivity(), IActivity_Auth {
     }
 
 
-    }
+}
 
