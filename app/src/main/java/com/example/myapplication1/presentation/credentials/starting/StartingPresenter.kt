@@ -1,8 +1,9 @@
-package com.example.myapplication1.presentation.starting
+package com.example.myapplication1.presentation.credentials.starting
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.example.myapplication1.domain.repositories.UserRepository
+import com.example.myapplication1.presentation.credentials.starting.IStartingView
 import javax.inject.Inject
 
 @InjectViewState

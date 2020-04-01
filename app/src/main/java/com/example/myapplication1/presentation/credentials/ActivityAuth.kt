@@ -1,15 +1,15 @@
-package com.example.myapplication1
+package com.example.myapplication1.presentation.credentials
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils.replace
 import com.example.myapplication1.domain.repositories.local.UserStorage
 import com.example.myapplication1.presentation.App
-import com.example.myapplication1.presentation.Authorization.AuthorizationFragment
+import com.example.myapplication1.presentation.credentials.authorization.AuthorizationFragment
 import com.example.myapplication1.Base.ABaseActivity
+import com.example.myapplication1.R
 
-class ActivityAuth : ABaseActivity(), IActivity_Auth {
+class ActivityAuth : ABaseActivity(),
+    IActivity_Auth {
 
     companion object {
 

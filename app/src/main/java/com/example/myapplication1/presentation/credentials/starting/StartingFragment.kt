@@ -1,6 +1,5 @@
-package com.example.myapplication1.presentation.starting
+package com.example.myapplication1.presentation.credentials.starting
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,21 +9,18 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.myapplication1.R
-import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.starting.*
-import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication1.ActivityAuth
-import com.example.myapplication1.MainActivity
 
 
-
-class StartingFragment : MvpAppCompatFragment(), IStartingView {
+class StartingFragment : MvpAppCompatFragment(),
+    IStartingView {
 
     @InjectPresenter
     lateinit var presenter: StartingPresenter
 
     @ProvidePresenter
-    fun providePresenter() = StartingPresenter()
+    fun providePresenter() =
+        StartingPresenter()
 
     override fun onCreateView(
         inflater: LayoutInflater,

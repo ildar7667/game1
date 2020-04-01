@@ -1,4 +1,4 @@
-package com.example.myapplication1.domain.di.models
+package com.example.myapplication1.domain.repositories.models.rest
 
 data class Token(
     val access: String,

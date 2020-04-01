@@ -1,15 +1,12 @@
-package com.example.myapplication1
+package com.example.myapplication1.presentation.main
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.btn_exit
-import kotlinx.android.synthetic.main.activity_main.button_auth
-import kotlinx.android.synthetic.main.activity_main.btn_1game
-import com.example.myapplication1.presentation.App
 import com.example.myapplication1.R
-import com.example.myapplication1.ActivityAuth
-
+import com.example.myapplication1.presentation.App
+import com.example.myapplication1.presentation.credentials.ActivityAuth
+import com.example.myapplication1.presentation.gameoffline.ActivityGameOffline
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -61,10 +58,11 @@ class MainActivity : AppCompatActivity() {
         //  startActivity(intent)
         }
 
-        btn_1game.setOnClickListener(){
+        btngameoffline.setOnClickListener(){
       //   game1.show()
                         //   val intent = Intent(this, game1::class.java)
            // startActivity(intent)
+            ActivityGameOffline.show()
         }
 
         btn_exit.setOnClickListener{

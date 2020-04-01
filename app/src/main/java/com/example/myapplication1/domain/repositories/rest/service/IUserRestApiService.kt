@@ -1,6 +1,6 @@
 package com.example.myapplication1.domain.repositories.rest.service
 
-import com.example.myapplication1.domain.di.models.User
+import com.example.myapplication1.domain.repositories.models.rest.User
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.POST

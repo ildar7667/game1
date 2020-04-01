@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".presentation.main.MainActivity"
     android:id="@+id/container">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +29,7 @@
                 tools:layout_editor_absoluteY="65dp" />
 
             <Button
-                android:id="@+id/btn_1game"
+                android:id="@+id/btngameoffline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_1game"

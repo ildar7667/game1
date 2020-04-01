@@ -1,8 +1,8 @@
 package com.example.myapplication1.domain.repositories.rest
 
 import android.util.Log
-import com.example.myapplication1.ActivityAuth
-import com.example.myapplication1.domain.di.models.Token
+import com.example.myapplication1.presentation.credentials.ActivityAuth
+import com.example.myapplication1.domain.repositories.models.rest.Token
 import com.example.myapplication1.domain.repositories.UserRepository
 import com.example.myapplication1.exceptions.AuthException
 import okhttp3.Interceptor

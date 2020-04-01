@@ -1,6 +1,6 @@
 package com.example.myapplication1.domain.repositories.local
 
-import com.example.myapplication1.domain.di.models.User
+import com.example.myapplication1.domain.repositories.models.rest.User
 import javax.inject.Inject
 
 class UserStorage {

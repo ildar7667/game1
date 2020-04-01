@@ -1,4 +1,4 @@
-package com.example.myapplication1.presentation.starting
+package com.example.myapplication1.presentation.credentials.starting
 import com.arellomobile.mvp.MvpView
 
 interface IStartingView : MvpView {

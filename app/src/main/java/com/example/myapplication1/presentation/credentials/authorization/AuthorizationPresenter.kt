@@ -1,14 +1,10 @@
-package com.example.myapplication1.presentation.Authorization
+package com.example.myapplication1.presentation.credentials.authorization
 
-import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
 import com.example.myapplication1.domain.repositories.UserRepository
 import com.arellomobile.mvp.MvpPresenter
 import com.arellomobile.mvp.InjectViewState
-import com.example.myapplication1.ActivityAuth
 import com.example.myapplication1.Base.SubRX
-import com.example.myapplication1.MainActivity
-import com.example.myapplication1.presentation.starting.IAuthorizationView
+import com.example.myapplication1.presentation.main.MainActivity
 import javax.inject.Inject
 
 
