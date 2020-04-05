@@ -5,11 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/butgameoffline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="175dp"
-        tools:layout_editor_absoluteY="123dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="5dp">
+
+        <com.example.myapplication1.presentation.game.GameView
+            android:id="@+id/gameView"
+            android:layout_width="match_parent"
+            android:layout_height="294dp"
+            tools:layout_editor_absoluteX="35dp"
+            tools:layout_editor_absoluteY="81dp" />
+
+        <Button
+            android:id="@+id/butgameoffline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            tools:layout_editor_absoluteX="57dp"
+            tools:layout_editor_absoluteY="398dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

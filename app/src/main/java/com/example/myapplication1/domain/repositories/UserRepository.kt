@@ -45,7 +45,5 @@ class UserRepository {
         TODO("Not yet implemented")
     }
 
-    fun gameofflineshow () {
 
-    }
 }
