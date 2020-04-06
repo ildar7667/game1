@@ -28,13 +28,14 @@ open class TakeUI : IElementUI {
 
     var state: Int = STATE_UNDEFINED
 
+
     override fun render(canvas: Canvas) {
-        renderUnder(canvas)
-       /* when (state) {
+
+        when (state) {
             STATE_CROSS -> renderCross(canvas)
             STATE_ZERO -> renderZero(canvas)
             STATE_UNDEFINED -> renderUnder(canvas)
-        }*/
+        }
     }
 
 

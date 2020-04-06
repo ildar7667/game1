@@ -49,7 +49,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
             //GameView(gameView.context).isAttachedToWindow()
             //GameView(gameView.context)
 
-        }
+                   }
 
 
       /*

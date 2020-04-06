@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
+import kotlinx.android.synthetic.main.gameoffline.view.*
 
 class GameView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -30,9 +31,14 @@ class GameView @JvmOverloads constructor(
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
 
-        post({render()})
+       // post({ render() })
         //postDelayed({ render() }, 500)
+      //  butgameoffline.setOnClickListener {
+            post({ render() })
+       // }
     }
+
+
 
     fun render() {
 
