@@ -29,7 +29,9 @@ class GameView @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        postDelayed({ render() }, 500)
+
+        post({render()})
+        //postDelayed({ render() }, 500)
     }
 
     fun render() {
@@ -55,4 +57,6 @@ class GameView @JvmOverloads constructor(
         playingField.height = height
         playingField.render(canvas)
     }
+
+
 }

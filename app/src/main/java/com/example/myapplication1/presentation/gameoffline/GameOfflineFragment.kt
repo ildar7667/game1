@@ -47,8 +47,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
             //gv.render()
            // gameView.render()
             //GameView(gameView.context).isAttachedToWindow()
-            GameView(gameView.context)
-
+            //GameView(gameView.context)
 
         }
 

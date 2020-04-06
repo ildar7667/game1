@@ -3,6 +3,7 @@ package com.example.myapplication1.presentation.game.ui
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.media.Image
 
 open class TakeUI : IElementUI {
 
@@ -13,7 +14,7 @@ open class TakeUI : IElementUI {
 
         val paintRed = Paint().apply {
             color = Color.RED
-            this.strokeWidth = 5f
+            this.strokeWidth = 2f
         }
         val paintBlue = Paint().apply { color = Color.BLUE }
         val paintYellow = Paint().apply { color = Color.YELLOW }
@@ -28,12 +29,16 @@ open class TakeUI : IElementUI {
     var state: Int = STATE_UNDEFINED
 
     override fun render(canvas: Canvas) {
-        when (state) {
+        renderUnder(canvas)
+       /* when (state) {
             STATE_CROSS -> renderCross(canvas)
             STATE_ZERO -> renderZero(canvas)
             STATE_UNDEFINED -> renderUnder(canvas)
-        }
+        }*/
     }
+
+
+
 
     private fun renderUnder(canvas: Canvas) {
         val x = x.toFloat()
@@ -41,7 +46,12 @@ open class TakeUI : IElementUI {
         val w = width.toFloat()
         val h = height.toFloat()
 
+
         canvas.drawLine (x,y,x,y+w,paintRed)
+        canvas.drawLine (x,y,x+h,y,paintRed)
+        canvas.drawLine (x+h,y,x+h,y+w,paintRed)
+        canvas.drawLine (x+h,y+w,x,y+w,paintRed)
+       //canvas.drawText("x",x,y, paintRed)
 
     }
 

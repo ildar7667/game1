@@ -29,8 +29,8 @@ class PlayingFieldUI : IElementUI {
 
         var row = 0
         var col = 0
-        val itemWidth = width / 15
-        val itemHeight = height / 15
+        val itemWidth = width / 10
+        val itemHeight = height / 10
 
         for (take in takes) {
 
