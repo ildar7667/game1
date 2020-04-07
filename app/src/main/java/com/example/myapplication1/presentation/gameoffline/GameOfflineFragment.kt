@@ -3,6 +3,7 @@ package com.example.myapplication1.presentation.gameoffline
 import android.content.Context
 import android.graphics.Canvas
 import android.os.Bundle
+import android.view.SurfaceView
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -41,13 +42,16 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
             //val gv = GameView(Context)
 
-            presenter.gameoffline("Одиночная игра")
+            //presenter.gameoffline("Одиночная игра")
             //MainActivity.show()
             // GameView.onAttachedToWindow()
             //gv.render()
            // gameView.render()
             //GameView(gameView.context).isAttachedToWindow()
-            //GameView(gameView.context)
+           // GameView(gameView.context)
+            //GameView(gameView.context).setsh()
+            gameView.setsh()
+
 
                    }
 

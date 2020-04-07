@@ -27,12 +27,14 @@ class PlayingFieldUI : IElementUI {
 
       //  for (i in 11..20)
          //   takes[i-1].state=0
-        setshipsfour(5)
+    //    setshipsfour(5)
 
     }
 
     fun setshipsfour(n: Int) {
         var kol:Int
+
+
        for (kol in 1..10) {
 
             val randome = Random(System.currentTimeMillis())

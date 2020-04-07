@@ -28,17 +28,20 @@ class GameView @JvmOverloads constructor(
         sfHolder = holder
     }
 
-    override fun onAttachedToWindow() {
+    /*override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-
-       // post({ render() })
-        //postDelayed({ render() }, 500)
-      //  butgameoffline.setOnClickListener {
             post({ render() })
-       // }
-    }
+        }*/
 
+    fun setsh(){
+      playingField.setshipsfour(5)
+        //super.onAttachedToWindow()
+        //GameView(gameView.context).onAttachedToWindow()
+        //super.onAttachedToWindow()
+       // render()
+        post({ render() })
 
+            }
 
     fun render() {
 
