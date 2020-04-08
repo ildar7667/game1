@@ -4,6 +4,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import kotlinx.android.synthetic.main.gameoffline.*
 import kotlin.random.Random
 
 class PlayingFieldUI : IElementUI {
@@ -35,9 +36,18 @@ class PlayingFieldUI : IElementUI {
         var kol:Int
 
 
-       for (kol in 1..10) {
+       for (kol in 1..4) {
+          // takes[kol].state=2
 
-            val randome = Random(System.currentTimeMillis())
+          // val randome = Random(System.currentTimeMillis())
+           val randome = Random(System.nanoTime())
+           val n: Int = randome.nextInt(99)
+         //  takes[n].state = 2
+
+
+
+
+   //        val randome = Random(System.currentTimeMillis())
             if (randome.nextInt(2) == 0)
             {//вертикальный
 
@@ -57,6 +67,7 @@ class PlayingFieldUI : IElementUI {
             }
             // for (i in 1..100)
             //     takes[i].state=1
+
         }
     }
     override fun render(canvas: Canvas) {
