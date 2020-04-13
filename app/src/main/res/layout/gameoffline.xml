@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +13,8 @@
 
         android:orientation="vertical"
         tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="5dp">
+        tools:layout_editor_absoluteY="5dp"
+        android:id="@+id/gameoffline">
 
         <com.example.myapplication1.presentation.game.GameView
             android:id="@+id/gameView"
@@ -28,6 +30,12 @@
                 android:text="Button"
                 tools:layout_editor_absoluteX="57dp"
                 tools:layout_editor_absoluteY="398dp" />
+
+        <TextView
+            android:id="@+id/TextViewGV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

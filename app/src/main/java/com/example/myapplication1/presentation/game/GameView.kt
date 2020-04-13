@@ -4,7 +4,10 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.widget.TextView
+import com.example.myapplication1.R
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
+import kotlinx.android.synthetic.main.gameoffline.*
 import kotlinx.android.synthetic.main.gameoffline.view.*
 
 class GameView @JvmOverloads constructor(
@@ -39,7 +42,11 @@ class GameView @JvmOverloads constructor(
         //GameView(gameView.context).onAttachedToWindow()
         //super.onAttachedToWindow()
        // render()
+       // TextViewGV.text="ghjfg"
         post({ render() })
+
+      // val textss: TextView = findViewById(R.id.TextViewGV) as TextView
+       // text.setText("size")
 
             }
 

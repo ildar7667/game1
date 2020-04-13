@@ -4,6 +4,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import android.widget.Toast
 import kotlinx.android.synthetic.main.gameoffline.*
 import kotlin.random.Random
 
@@ -32,19 +33,17 @@ class PlayingFieldUI : IElementUI {
 
     }
 
-    fun setshipsfour(n: Int) {
+
+    fun setshipsfour (n: Int) {
         var kol:Int
 
-
-       for (kol in 1..4) {
+       for (kol in 1..1) {
           // takes[kol].state=2
 
           // val randome = Random(System.currentTimeMillis())
            val randome = Random(System.nanoTime())
            val n: Int = randome.nextInt(99)
          //  takes[n].state = 2
-
-
 
 
    //        val randome = Random(System.currentTimeMillis())
@@ -56,6 +55,19 @@ class PlayingFieldUI : IElementUI {
                 takes[ran + 10].state = 2
                 takes[ran + 20].state = 2
                 takes[ran + 30].state = 2
+
+
+                val x:Int = ran/10+1
+                val y:Int = ran%10+1
+
+             // val part1 = PartShips (x,y,1)
+               // val listpar : List<Ships> =
+                val listpart = listOf(PartShips (x,y,1),PartShips (x,y+1,1),PartShips (x,y+2,1),PartShips (x,y+3,1))
+              val shipsfour = Ships(4, 1,listpart )
+               // return shipsfour
+
+
+
             } else {//горизонтальный
 
                 var ranx: Int = randome.nextInt(7)
@@ -64,12 +76,22 @@ class PlayingFieldUI : IElementUI {
                 takes[ranx + 10 * rany + 1].state = 2
                 takes[ranx + 10 * rany + 2].state = 2
                 takes[ranx + 10 * rany + 3].state = 2
+
+                val x:Int = ranx+1
+                val y:Int = rany+1
+
+                //val part1 = PartShips (x,y,1)
+                val listpart = listOf(PartShips (x,y,1),PartShips (x+1,y,1),PartShips (x+2,y,1),PartShips (x+3,y,1))
+                val shipsfour = Ships(4, 1,listpart )
+               // return shipsfour
             }
             // for (i in 1..100)
             //     takes[i].state=1
 
         }
+
     }
+
     override fun render(canvas: Canvas) {
 
         canvas.drawRect(Rect(0, 0, width, height), bgPaint)
