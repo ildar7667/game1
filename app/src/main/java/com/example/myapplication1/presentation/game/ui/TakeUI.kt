@@ -11,6 +11,7 @@ open class TakeUI : IElementUI {
         const val STATE_UNDEFINED = 0
         const val STATE_CROSS = 1
         const val STATE_ZERO = 2
+        const val STATE_PADDED = 3
 
         val paintRed = Paint().apply {
             color = Color.RED
@@ -18,6 +19,8 @@ open class TakeUI : IElementUI {
         }
         val paintBlue = Paint().apply { color = Color.BLUE }
         val paintYellow = Paint().apply { color = Color.YELLOW }
+        val paintBlack = Paint().apply { color = Color.BLACK }
+        val paintGreen = Paint().apply { color = Color.GREEN }
     }
 
     var x: Int = 0
@@ -35,11 +38,24 @@ open class TakeUI : IElementUI {
             STATE_CROSS -> renderCross(canvas)
             STATE_ZERO -> renderZero(canvas)
             STATE_UNDEFINED -> renderUnder(canvas)
+            STATE_PADDED -> renderPadded(canvas)
         }
     }
 
 
+     private fun renderPadded(canvas: Canvas){
+         val x = x.toFloat()
+         val y = y.toFloat()
+         val w = width.toFloat()
+         val h = height.toFloat()
+         val hw = w * 0.5f
+         val cx = x + hw
+         val cy = y + h * 0.5f
 
+         canvas.drawCircle(cx, cy, hw, paintGreen)
+         canvas.drawCircle(cx, cy, hw * 0.9f, paintBlack)
+
+     }
 
     private fun renderUnder(canvas: Canvas) {
         val x = x.toFloat()

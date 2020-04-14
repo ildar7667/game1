@@ -5,18 +5,32 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import android.widget.Toast
+import com.example.myapplication1.presentation.game.Const
+import com.example.myapplication1.presentation.game.model.GameState
 import kotlinx.android.synthetic.main.gameoffline.*
 import kotlin.random.Random
 
 class PlayingFieldUI : IElementUI {
 
+    companion object {
+
+        private val bgPaint = Paint().apply { color = Color.YELLOW }
+        private val linePaint = Paint().apply {
+            color = Color.BLACK
+            strokeWidth = 3f
+        }
+    }
+
     private val takes = mutableListOf<TakeUI>()
-    private val bgPaint = Paint().apply { color = Color.BLUE }
+    //private val bgPaint = Paint().apply { color = Color.BLUE }
+
+    var x: Int = 0
+    var y: Int = 0
 
     var width: Int = 0
     var height: Int = 0
 
-    var k: Int = 0
+
 
     init {
 
@@ -33,6 +47,14 @@ class PlayingFieldUI : IElementUI {
 
     }
 
+    fun onClickSquare(x: Float, y: Float){
+        var xx : Int = (x/(width/10)).toInt()
+        var yy : Int = (y/(height/10)).toInt()
+
+        if (takes[yy*10-1+xx].state==2)
+        takes[yy*10-1+xx].state=3
+        else  takes[yy*10-1+xx].state=1
+    }
 
     fun setshipsfour (n: Int) {
         var kol:Int
@@ -94,7 +116,8 @@ class PlayingFieldUI : IElementUI {
 
     override fun render(canvas: Canvas) {
 
-        canvas.drawRect(Rect(0, 0, width, height), bgPaint)
+        canvas.drawRect(Rect(0 + x, 0 + y, width + x, height + y), bgPaint)
+        val padding = (width * 0.005).toInt()
 
         var row = 0
         var col = 0
@@ -103,19 +126,52 @@ class PlayingFieldUI : IElementUI {
 
         for (take in takes) {
 
-            take.x = col * itemWidth
-            take.y = row * itemHeight
+            take.x = col * itemWidth + padding + x
+            take.y = row * itemHeight + padding + y
 
-            take.width = itemWidth
-            take.height = itemHeight
+            take.width = itemWidth - 2 * padding
+            take.height = itemHeight - 2 * padding
 
             take.render(canvas)
 
             if (++col == 10) {
                 col = 0
                 if (++row == 10)
-                    return
+                    break
             }
         }
+
+        val iw = itemWidth.toFloat()
+        val ih = itemHeight.toFloat()
+        val w = width.toFloat()
+        val h = height.toFloat()
+
+        // vertical
+       // canvas.drawLine(iw + x, 0f, iw + x, h, linePaint)
+       // canvas.drawLine(2 * iw + x, 0f, 2 * iw + x, h, linePaint)
+
+        // horizontal
+      //  canvas.drawLine(0f, ih + y, w + x, ih + y, linePaint)
+      //  canvas.drawLine(0f, 2 * ih + y, w + x, 2 * ih + y, linePaint)
+
+    }
+
+    fun onClick(x: Float, y: Float): TakeUI? {
+        return takes.firstOrNull { it.x < x && it.x + it.width >= x && it.y < y && it.y + it.height >= y }
+
+    }
+
+    fun setGameState(state: GameState) {
+
+        val game = state.game.toTypedArray()
+        for (i in 0 until 99)
+            takes.get(i).state = when (game[i]) {
+                Const.SELECT_TYPE_CROSS -> TakeUI.STATE_CROSS
+                Const.SELECT_TYPE_ZERO -> TakeUI.STATE_ZERO
+                else -> TakeUI.STATE_UNDEFINED
+            }
+
+        if (state.winner != null)
+            println("WIN!")
     }
 }
