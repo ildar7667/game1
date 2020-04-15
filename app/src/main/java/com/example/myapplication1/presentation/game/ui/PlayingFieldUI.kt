@@ -56,6 +56,81 @@ class PlayingFieldUI : IElementUI {
         else  takes[yy*10-1+xx].state=1
     }
 
+    fun setshipsx (k: Int, len: Int) {
+        var kol :Int =1
+
+       while (kol<=k) {
+
+           val randome = Random(System.nanoTime())
+           var kx: Int = randome.nextInt(10 - (len - 1))
+           var ky: Int = randome.nextInt(10 - (len - 1))
+           var j: Int = randome.nextInt(2)
+
+
+           if (j == 0) {
+               //vertical
+               if (chek(len, 0, kx, ky) == 0){
+                   for (i in 1..len) {
+                       takes[(ky + i - 1) * 10 + kx].state = 2
+
+                   }
+               kol++}
+           } else {
+               //gorizontal
+               if (chek(len, 1, kx, ky) == 0){
+               for (i in 1..len) {
+                   takes[ky * 10 + kx + i - 1].state = 2
+
+               }
+
+            kol++}
+               /*   if (chek(len,j, kx, ky)==0)
+            {  takes[ky*10+kx].state=2
+                kol++}*/
+
+           }
+       }
+       }
+
+
+    fun chek (len: Int, j: Int, x:Int, y: Int) : Int {
+        var s:Int = 0
+         if (j==0) {
+         //vertical
+         var a:Int = x-1
+         var b:Int = x+1
+         var c:Int = y-1
+         var d:Int = y+len
+             if (a==-1) a++
+             if (b==10) b--
+             if (c==-1) c++
+             if (d==10) d--
+
+             for (i in a..b)
+                 for (j in c..d)
+
+             if (takes[j*10+i].state==2) s++
+         }
+        else
+         {//gorizontal
+             var a:Int = x-1
+             var b:Int = x+len
+             var c:Int = y-1
+             var d:Int = y+1
+             if (a==-1) a++
+             if (b==10) b--
+             if (c==-1) c++
+             if (d==10) d--
+
+             for (i in a..b)
+                 for (j in c..d)
+
+                     if (takes[j*10+i].state==2) s++
+
+         }
+        return s
+    }
+
     fun setshipsfour (n: Int) {
         var kol:Int
 
@@ -73,11 +148,13 @@ class PlayingFieldUI : IElementUI {
             {//вертикальный
 
                 var ran: Int = randome.nextInt(69)
-                takes[ran].state = 2
-                takes[ran + 10].state = 2
-                takes[ran + 20].state = 2
-                takes[ran + 30].state = 2
 
+                if (takes[ran].state!=2 && takes[ran + 10].state != 2 && takes[ran + 20].state != 2 && takes[ran + 30].state != 2) {
+                    takes[ran].state = 2
+                    takes[ran + 10].state = 2
+                    takes[ran + 20].state = 2
+                    takes[ran + 30].state = 2
+                }
 
                 val x:Int = ran/10+1
                 val y:Int = ran%10+1
@@ -94,11 +171,13 @@ class PlayingFieldUI : IElementUI {
 
                 var ranx: Int = randome.nextInt(7)
                 var rany: Int = randome.nextInt(10)
-                takes[ranx + 10 * rany].state = 2
-                takes[ranx + 10 * rany + 1].state = 2
-                takes[ranx + 10 * rany + 2].state = 2
-                takes[ranx + 10 * rany + 3].state = 2
 
+                if (takes[ranx + 10 * rany].state != 2 && takes[ranx + 10 * rany + 1].state != 2 && takes[ranx + 10 * rany + 2].state != 2 && takes[ranx + 10 * rany + 3].state != 2) {
+                    takes[ranx + 10 * rany].state = 2
+                    takes[ranx + 10 * rany + 1].state = 2
+                    takes[ranx + 10 * rany + 2].state = 2
+                    takes[ranx + 10 * rany + 3].state = 2
+                }
                 val x:Int = ranx+1
                 val y:Int = rany+1
 

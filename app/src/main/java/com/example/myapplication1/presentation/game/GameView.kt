@@ -44,7 +44,10 @@ class GameView @JvmOverloads constructor(
 
 
     fun setsh(){
-      playingField.setshipsfour(5)
+      playingField.setshipsx(1,4)
+        playingField.setshipsx(2,3)
+        playingField.setshipsx(3,2)
+        playingField.setshipsx(4,1)
         //super.onAttachedToWindow()
         //GameView(gameView.context).onAttachedToWindow()
         //super.onAttachedToWindow()
