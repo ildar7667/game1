@@ -47,9 +47,22 @@ class PlayingFieldUI : IElementUI {
 
     }
 
+    fun onMoveSquare(x: Float, y: Float){
+        var xf: Float = x
+        var yf: Float = y
+
+        var xx : Int = (xf/(width/10)).toInt()
+        var yy : Int = (yf/(height/10)).toInt()
+        //canvas.drawLine(x, y, x, y, linePaint)
+    }
+
     fun onClickSquare(x: Float, y: Float){
-        var xx : Int = (x/(width/10)).toInt()
-        var yy : Int = (y/(height/10)).toInt()
+        var xf: Float = x
+        var yf: Float = y
+
+
+        var xx : Int = (xf/(width/10)).toInt()
+        var yy : Int = (yf/(height/10)).toInt()
 
         if (takes[yy*10-1+xx].state==2)
         takes[yy*10-1+xx].state=3
@@ -57,6 +70,9 @@ class PlayingFieldUI : IElementUI {
     }
 
     fun setshipsx (k: Int, len: Int) {
+       //k - количество кораблей
+       //l - длина корабля
+
         var kol :Int =1
 
        while (kol<=k) {
@@ -94,6 +110,8 @@ class PlayingFieldUI : IElementUI {
 
 
     fun chek (len: Int, j: Int, x:Int, y: Int) : Int {
+        //функция проверки возможности установить корабль в данном месте
+        //len длина, j верт/гориз 0/1, x y координаты левого/верхнего квадрата корабля
         var s:Int = 0
          if (j==0) {
          //vertical
@@ -237,6 +255,8 @@ class PlayingFieldUI : IElementUI {
 
     fun onClick(x: Float, y: Float): TakeUI? {
         return takes.firstOrNull { it.x < x && it.x + it.width >= x && it.y < y && it.y + it.height >= y }
+
+
 
     }
 

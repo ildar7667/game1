@@ -35,6 +35,7 @@ class GameView @JvmOverloads constructor(
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
                 MotionEvent.ACTION_UP -> onClick(event.x, event.y)
+               // MotionEvent.ACTION_MOVE -> onMove (event.x, event.y)
                 else -> false
             }
         }
@@ -44,7 +45,7 @@ class GameView @JvmOverloads constructor(
 
 
     fun setsh(){
-      playingField.setshipsx(1,4)
+        playingField.setshipsx(1,4)
         playingField.setshipsx(2,3)
         playingField.setshipsx(3,2)
         playingField.setshipsx(4,1)
@@ -53,6 +54,7 @@ class GameView @JvmOverloads constructor(
         //super.onAttachedToWindow()
        // render()
        // TextViewGV.text="ghjfg"
+
         post({ render() })
 
       // val textss: TextView = findViewById(R.id.TextViewGV) as TextView
@@ -102,11 +104,18 @@ class GameView @JvmOverloads constructor(
         playingField.render(canvas)
     }
 
+    private fun onMove(x: Float, y: Float) : Boolean {
+        playingField.onMoveSquare(x, y)
+        post({ render() })
+        return true
+    }
+
     private fun onClick(x: Float, y: Float): Boolean {
        // setsh()
 
         playingField.onClickSquare(x, y)
         post({ render() })
+
         val listener = onSelectListener ?: return false
 
         playingField.onClick(x, y)?.let {

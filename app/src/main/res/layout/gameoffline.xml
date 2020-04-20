@@ -30,6 +30,13 @@
                 android:text="Button"
                 tools:layout_editor_absoluteX="57dp"
                 tools:layout_editor_absoluteY="398dp" />
+        <Button
+            android:id="@+id/butgameofflinenext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Вперед!"
+            tools:layout_editor_absoluteX="57dp"
+            tools:layout_editor_absoluteY="398dp" />
 
         <TextView
             android:id="@+id/TextViewGV"

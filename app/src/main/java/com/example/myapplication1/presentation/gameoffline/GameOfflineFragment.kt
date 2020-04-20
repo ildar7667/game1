@@ -16,6 +16,7 @@ import com.example.myapplication1.domain.di.components.DaggerAppComponent
 import com.example.myapplication1.presentation.game.GameView
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.Ships
+import com.example.myapplication1.presentation.gameplay.GamePlay
 import com.example.myapplication1.presentation.main.MainActivity
 import kotlinx.android.synthetic.main.gameoffline.*
 import javax.inject.Inject
@@ -66,6 +67,11 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
 
                    }
+
+        butgameofflinenext.setOnClickListener{
+
+            GamePlay.show()
+        }
 
 
       /*
