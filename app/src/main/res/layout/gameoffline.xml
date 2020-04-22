@@ -19,7 +19,7 @@
         <com.example.myapplication1.presentation.game.GameView
             android:id="@+id/gameView"
             android:layout_width="match_parent"
-            android:layout_height="294dp"
+            android:layout_height="300dp"
             tools:layout_editor_absoluteX="35dp"
             tools:layout_editor_absoluteY="81dp">
         </com.example.myapplication1.presentation.game.GameView>

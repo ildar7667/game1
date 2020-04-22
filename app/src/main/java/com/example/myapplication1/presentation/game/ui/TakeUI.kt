@@ -15,12 +15,13 @@ open class TakeUI : IElementUI {
 
         val paintRed = Paint().apply {
             color = Color.RED
-            this.strokeWidth = 2f
+            this.strokeWidth = 4f
         }
         val paintBlue = Paint().apply { color = Color.BLUE }
         val paintYellow = Paint().apply { color = Color.YELLOW }
         val paintBlack = Paint().apply { color = Color.BLACK }
         val paintGreen = Paint().apply { color = Color.GREEN }
+        val paintGray = Paint().apply { color = Color.GRAY }
     }
 
     var x: Int = 0
@@ -52,8 +53,10 @@ open class TakeUI : IElementUI {
          val cx = x + hw
          val cy = y + h * 0.5f
 
-         canvas.drawCircle(cx, cy, hw, paintGreen)
-         canvas.drawCircle(cx, cy, hw * 0.9f, paintBlack)
+         canvas.drawCircle(cx, cy, hw, paintBlack)
+         canvas.drawCircle(cx, cy, hw * 0.8f, paintGray)
+         canvas.drawCircle(cx, cy, hw * 0.6f, paintBlack)
+         canvas.drawCircle(cx, cy, hw * 0.2f, paintRed)
 
      }
 

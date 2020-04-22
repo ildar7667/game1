@@ -14,7 +14,8 @@ class PlayingFieldUI : IElementUI {
 
     companion object {
 
-        private val bgPaint = Paint().apply { color = Color.YELLOW }
+        private val bgPaint = Paint().apply { color = Color.BLUE}
+        //Color.CCCCCC
         private val linePaint = Paint().apply {
             color = Color.BLACK
             strokeWidth = 3f
@@ -214,7 +215,7 @@ class PlayingFieldUI : IElementUI {
     override fun render(canvas: Canvas) {
 
         canvas.drawRect(Rect(0 + x, 0 + y, width + x, height + y), bgPaint)
-        val padding = (width * 0.005).toInt()
+        val padding = (width * 0.002).toInt()
 
         var row = 0
         var col = 0

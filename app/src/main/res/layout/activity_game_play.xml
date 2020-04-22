@@ -4,6 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.gameplay.GamePlay">
+    tools:context=".presentation.gameplay.GameViewPlay">
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_margin="15dp"
+
+         android:orientation="vertical"
+         tools:layout_editor_absoluteX="5dp"
+         tools:layout_editor_absoluteY="5dp"
+         android:id="@+id/gameplayall">
+
+         <com.example.myapplication1.presentation.gameplay.GameViewPlay
+             android:id="@+id/gameViewPlay"
+             android:layout_width="match_parent"
+             android:layout_height="300dp"
+             tools:layout_editor_absoluteX="16dp"
+             tools:layout_editor_absoluteY="16dp"
+             />
+
+       <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="5dp"
+        android:id="@+id/gameplaytwolin"
+        android:layout_marginTop="15dp"   >
+
+             <com.example.myapplication1.presentation.gameplay.GameViewPlayTwo
+                 android:id="@+id/gameViewPlayTwo"
+                 android:layout_width="254dp"
+                 android:layout_height="219dp"
+                  />
+       </LinearLayout>
+         </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
