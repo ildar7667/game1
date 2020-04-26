@@ -36,6 +36,8 @@ class GameViewPlayTwo @JvmOverloads constructor(
                 else -> false
             }
         }
+
+        playingField.identships()
     }
 
 

@@ -27,7 +27,7 @@
                 android:id="@+id/butgameoffline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button"
+                android:text="Авторасстановка"
                 tools:layout_editor_absoluteX="57dp"
                 tools:layout_editor_absoluteY="398dp" />
         <Button
@@ -35,6 +35,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Вперед!"
+            tools:layout_editor_absoluteX="57dp"
+            tools:layout_editor_absoluteY="398dp" />
+        <Button
+            android:id="@+id/butscan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Скан кораблей"
             tools:layout_editor_absoluteX="57dp"
             tools:layout_editor_absoluteY="398dp" />
 

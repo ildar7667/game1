@@ -65,14 +65,16 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
             // text.setText("size")
 
-
-                   }
+                  }
 
         butgameofflinenext.setOnClickListener{
 
             GamePlay.show()
         }
 
+        butscan.setOnClickListener{
+            gameView.scanships()
+        }
 
       /*
         btnlogof.setOnClickListener{

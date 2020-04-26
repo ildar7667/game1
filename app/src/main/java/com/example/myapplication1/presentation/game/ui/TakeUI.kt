@@ -8,10 +8,10 @@ import android.media.Image
 open class TakeUI : IElementUI {
 
     companion object {
-        const val STATE_UNDEFINED = 0
-        const val STATE_CROSS = 1
-        const val STATE_ZERO = 2
-        const val STATE_PADDED = 3
+        const val STATE_UNDEFINED = 0 //пусто
+        const val STATE_CROSS = 1 //выстрел по пустому полю
+        const val STATE_ZERO = 2 //стоит корабль
+        const val STATE_PADDED = 3 //выстрел по кораблю
 
         val paintRed = Paint().apply {
             color = Color.RED

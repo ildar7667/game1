@@ -23,6 +23,7 @@ class PlayingFieldUI : IElementUI {
     }
 
     private val takes = mutableListOf<TakeUI>()
+    var listShips =  mutableListOf<Ships>()
     //private val bgPaint = Paint().apply { color = Color.BLUE }
 
     var x: Int = 0
@@ -45,6 +46,62 @@ class PlayingFieldUI : IElementUI {
       //  for (i in 11..20)
          //   takes[i-1].state=0
     //    setshipsfour(5)
+
+    }
+
+    fun identships(){
+        //listShips
+    }
+
+    fun scanshipsx(){
+
+      // var listShips =  mutableListOf<Ships>()
+        for (i in 0..99)
+           if (takes[i].state==2)
+           { var listpart = mutableListOf(PartShips (i%10,i/10,2))
+               takes[i].state=0
+             var k=1
+               //горизонтальный
+               if (i+1<100)
+               if (takes[i+1].state==2) {
+                   listpart.add(PartShips(i % 10 + 1, i / 10, 2))
+                   takes[i+1].state=0
+                   }
+               if (i+2<100)
+               if (takes[i+2].state==2) {
+                   listpart.add(PartShips(i % 10 + 2, i / 10, 2))
+                   takes[i+2].state=0
+                   }
+               if (i+3<100)
+               if (takes[i+3].state==2) {
+                   listpart.add(PartShips(i % 10 + 3, i / 10, 2))
+                   takes[i+3].state=0
+                   }
+
+               //вертикальный
+               if (i+10<100)
+               if (takes[i+10].state==2) {
+                   listpart.add(PartShips(i % 10, (i + 10) / 10, 2))
+                   takes[i+10].state=0
+                   }
+               if (i+20<100)
+               if (takes[i+20].state==2) {
+                   listpart.add(PartShips(i % 10, (i + 20) / 10, 2))
+                   takes[i+20].state=0
+               }
+               if (i+30<100)
+               if (takes[i+30].state==2) {
+                   listpart.add(PartShips(i % 10, (i + 30) / 10, 2))
+                   takes[i+30].state=0
+               }
+
+
+               listShips.add(Ships (listpart.size, 2, listpart))
+
+           //    val listpart = listOf(PartShips (x,y,1),PartShips (x,y+1,1),PartShips (x,y+2,1),PartShips (x,y+3,1))
+            //   val shipsfour = Ships(4, 1,listpart )
+           }
+
 
     }
 

@@ -63,6 +63,12 @@ class GameView @JvmOverloads constructor(
             }
 
 
+    fun scanships(){
+        playingField.scanshipsx()
+        post({ render() })
+    }
+
+
 
     fun render() {
 
