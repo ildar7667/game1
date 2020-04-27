@@ -38,6 +38,8 @@ class GameViewPlayTwo @JvmOverloads constructor(
         }
 
         playingField.identships()
+        post({ render() })
+
     }
 
 

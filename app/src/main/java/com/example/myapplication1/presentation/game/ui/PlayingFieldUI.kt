@@ -23,7 +23,7 @@ class PlayingFieldUI : IElementUI {
     }
 
     private val takes = mutableListOf<TakeUI>()
-    var listShips =  mutableListOf<Ships>()
+    private val listShips =  mutableListOf<Ships>()
     //private val bgPaint = Paint().apply { color = Color.BLUE }
 
     var x: Int = 0
@@ -51,6 +51,10 @@ class PlayingFieldUI : IElementUI {
 
     fun identships(){
         //listShips
+        for (i in 0..listShips.size)
+           // for (j in 0..listShips[i].size)
+                //takes[listShips[i].part[j].x*10+listShips[i].part[j].y].state=2
+            takes[i].state=2
     }
 
     fun scanshipsx(){
@@ -97,6 +101,7 @@ class PlayingFieldUI : IElementUI {
 
 
                listShips.add(Ships (listpart.size, 2, listpart))
+               k++
 
            //    val listpart = listOf(PartShips (x,y,1),PartShips (x,y+1,1),PartShips (x,y+2,1),PartShips (x,y+3,1))
             //   val shipsfour = Ships(4, 1,listpart )
