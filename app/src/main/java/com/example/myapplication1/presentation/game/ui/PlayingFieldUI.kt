@@ -7,6 +7,7 @@ import android.graphics.Rect
 import android.widget.Toast
 import com.example.myapplication1.presentation.game.Const
 import com.example.myapplication1.presentation.game.model.GameState
+import com.example.myapplication1.presentation.gameplay.GameViewPlayTwo
 import kotlinx.android.synthetic.main.gameoffline.*
 import kotlin.random.Random
 
@@ -23,7 +24,7 @@ class PlayingFieldUI : IElementUI {
     }
 
     private val takes = mutableListOf<TakeUI>()
-    private val listShips =  mutableListOf<Ships>()
+    val listShips =  mutableListOf<Ships>()
     //private val bgPaint = Paint().apply { color = Color.BLUE }
 
     var x: Int = 0
@@ -51,19 +52,20 @@ class PlayingFieldUI : IElementUI {
 
     fun identships(){
         //listShips
-        for (i in 0..listShips.size)
+        for (i in 0..16)
            // for (j in 0..listShips[i].size)
                 //takes[listShips[i].part[j].x*10+listShips[i].part[j].y].state=2
-            takes[i].state=2
+            takes[listShips.size].state=2
     }
 
-    fun scanshipsx(){
+    fun scanshipsx() {
 
-      // var listShips =  mutableListOf<Ships>()
+        // var listShips =  mutableListOf<Ships>()
         for (i in 0..99)
-           if (takes[i].state==2)
-           { var listpart = mutableListOf(PartShips (i%10,i/10,2))
-               takes[i].state=0
+            if (takes[i].state == 2)
+            {
+                var listpart = mutableListOf(PartShips(i % 10, i / 10, 2))
+                  takes[i].state=0
              var k=1
                //горизонтальный
                if (i+1<100)
@@ -100,15 +102,21 @@ class PlayingFieldUI : IElementUI {
                }
 
 
-               listShips.add(Ships (listpart.size, 2, listpart))
-               k++
+                listShips.add(Ships(1, 2, listpart))
 
-           //    val listpart = listOf(PartShips (x,y,1),PartShips (x,y+1,1),PartShips (x,y+2,1),PartShips (x,y+3,1))
-            //   val shipsfour = Ships(4, 1,listpart )
-           }
+                //   k++
+
+                //    val listpart = listOf(PartShips (x,y,1),PartShips (x,y+1,1),PartShips (x,y+2,1),PartShips (x,y+3,1))
+                //   val shipsfour = Ships(4, 1,listpart )
+            }
+
+        for (i in 0..listShips.size){
+           takes[i].state=3
+        }
 
 
     }
+
 
     fun onMoveSquare(x: Float, y: Float){
         var xf: Float = x
