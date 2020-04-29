@@ -7,9 +7,12 @@ import android.graphics.Rect
 import android.widget.Toast
 import com.example.myapplication1.presentation.game.Const
 import com.example.myapplication1.presentation.game.model.GameState
+import com.example.myapplication1.presentation.gameplay.GamePlay
 import com.example.myapplication1.presentation.gameplay.GameViewPlayTwo
+import com.example.myapplication1.presentation.gameplay.StateGame
 import kotlinx.android.synthetic.main.gameoffline.*
 import kotlin.random.Random
+
 
 class PlayingFieldUI : IElementUI {
 
@@ -112,8 +115,10 @@ class PlayingFieldUI : IElementUI {
 
         for (i in 0..listShips.size){
            takes[i].state=3
+
         }
 
+    //StateGame.listShipsfin= listShips
 
     }
 

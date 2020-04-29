@@ -22,7 +22,7 @@ class GameView @JvmOverloads constructor(
     override fun surfaceDestroyed(p0: SurfaceHolder?) { }
     override fun surfaceCreated(p0: SurfaceHolder?) { render() }
 
-    private val playingField = PlayingFieldUI()
+     val playingField = PlayingFieldUI()
 
     var onSelectListener: ((TakeUI) -> Unit)? = null
 

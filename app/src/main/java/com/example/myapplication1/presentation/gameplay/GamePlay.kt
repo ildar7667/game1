@@ -6,10 +6,13 @@ import android.os.Bundle
 import com.example.myapplication1.Base.ABaseActivity
 import com.example.myapplication1.R
 import com.example.myapplication1.presentation.App
+import com.example.myapplication1.presentation.game.ui.Ships
 import com.example.myapplication1.presentation.gameoffline.ActivityGameOffline
 import com.example.myapplication1.presentation.gameoffline.IActivityGameOffline
 
 class GamePlay : ABaseActivity(), IGamePlay {
+
+
 
     companion object {
 
@@ -34,4 +37,10 @@ class GamePlay : ABaseActivity(), IGamePlay {
     override fun showGamePlay() {
         //replace(GamePlayFragment())
     }
+
+    //var listShipsfin = mutableListOf<Ships>()
+
+
+
+
 }
