@@ -17,7 +17,9 @@ import com.example.myapplication1.presentation.game.GameView
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.Ships
 import com.example.myapplication1.presentation.gameplay.GamePlay
+import com.example.myapplication1.presentation.gameplay.StateGame
 import com.example.myapplication1.presentation.main.MainActivity
+import kotlinx.android.synthetic.main.activity_game_play.*
 import kotlinx.android.synthetic.main.gameoffline.*
 import javax.inject.Inject
 
@@ -73,7 +75,16 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
         }
 
         butscan.setOnClickListener{
-            gameView.scanships()
+            var k:Int
+            k=gameView.scanships()
+           // GamePlay(k)
+            //gameViewPlayTwo.k=k
+            //stat=StateGame(k)
+            var Stg=StateGame()
+            Stg.k=k
+            //Stg.start()
+
+
         }
 
       /*

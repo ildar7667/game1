@@ -9,8 +9,11 @@ import com.example.myapplication1.presentation.App
 import com.example.myapplication1.presentation.game.ui.Ships
 import com.example.myapplication1.presentation.gameoffline.ActivityGameOffline
 import com.example.myapplication1.presentation.gameoffline.IActivityGameOffline
+import kotlinx.android.synthetic.main.activity_game_play.*
+import kotlinx.android.synthetic.main.gameoffline.*
+import com.example.myapplication1.presentation.gameoffline.GameOfflineFragment
 
-class GamePlay : ABaseActivity(), IGamePlay {
+class GamePlay: ABaseActivity(), IGamePlay {
 
 
 
@@ -25,6 +28,7 @@ class GamePlay : ABaseActivity(), IGamePlay {
                     putExtra(ARG_DROP_CREDENTIALS, true)
                 })
             }
+
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +36,7 @@ class GamePlay : ABaseActivity(), IGamePlay {
         setContentView(R.layout.activity_game_play)
 
         showGamePlay()
+        test()
     }
 
     override fun showGamePlay() {
@@ -40,7 +45,18 @@ class GamePlay : ABaseActivity(), IGamePlay {
 
     //var listShipsfin = mutableListOf<Ships>()
 
+   fun test(){
 
+       //var k:Int
+       //k=gameView.scanships()
+     //  k=Stg.k
+       //k=StateGame()
+
+       gameViewPlayTwo.k=3
+       gameViewPlayTwo.ident()
+
+
+   }
 
 
 }

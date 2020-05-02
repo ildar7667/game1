@@ -5,6 +5,7 @@ import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.example.myapplication1.domain.repositories.GameRepository
 import com.example.myapplication1.presentation.game.GameView
+import com.example.myapplication1.presentation.game.ui.Ships
 import javax.inject.Inject
 
 @InjectViewState
@@ -24,5 +25,7 @@ class GameOfflinePresenter : MvpPresenter<IGameOfflineView> {
 
 
     }
+
+    //var listshig = arrayListOf<Ships>()
 
 }

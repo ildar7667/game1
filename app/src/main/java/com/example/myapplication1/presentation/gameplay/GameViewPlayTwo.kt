@@ -11,6 +11,8 @@ import com.example.myapplication1.presentation.game.model.GameState
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.Ships
 import com.example.myapplication1.presentation.game.ui.TakeUI
+import kotlinx.android.synthetic.main.gameoffline.*
+import kotlinx.android.synthetic.main.gameoffline.view.*
 import kotlin.math.min
 
 class GameViewPlayTwo @JvmOverloads constructor(
@@ -25,7 +27,7 @@ class GameViewPlayTwo @JvmOverloads constructor(
 
     var onSelectListener: ((TakeUI) -> Unit)? = null
 
-
+    var k:Int=1
 
     init {
 
@@ -41,14 +43,18 @@ class GameViewPlayTwo @JvmOverloads constructor(
             }
         }
 
-        playingField.identships()
-        post({ render() })
+       // k=gameView.scanships()
+       // playingField.identships(k)
+        //post({ render() })
 
     }
 
 
 
-
+    fun ident(){
+        playingField.identships(k)
+        post({ render() })
+    }
 
 
 

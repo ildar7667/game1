@@ -53,15 +53,15 @@ class PlayingFieldUI : IElementUI {
 
     }
 
-    fun identships(){
+    fun identships(k: Int){
         //listShips
-        for (i in 0..16)
+        for (i in 0..k)
            // for (j in 0..listShips[i].size)
                 //takes[listShips[i].part[j].x*10+listShips[i].part[j].y].state=2
-            takes[listShips.size].state=2
+            takes[i].state=2
     }
 
-    fun scanshipsx() {
+    fun scanshipsx() : Int {
 
         // var listShips =  mutableListOf<Ships>()
         for (i in 0..99)
@@ -119,6 +119,8 @@ class PlayingFieldUI : IElementUI {
         }
 
     //StateGame.listShipsfin= listShips
+        return 5
+        //listShips.size
 
     }
 

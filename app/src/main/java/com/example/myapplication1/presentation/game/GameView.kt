@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.example.myapplication1.R
 import com.example.myapplication1.presentation.game.model.GameState
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
+import com.example.myapplication1.presentation.game.ui.Ships
 import kotlinx.android.synthetic.main.gameoffline.*
 import kotlinx.android.synthetic.main.gameoffline.view.*
 import com.example.myapplication1.presentation.game.ui.TakeUI
@@ -63,9 +64,13 @@ class GameView @JvmOverloads constructor(
             }
 
 
-    fun scanships(){
-        playingField.scanshipsx()
+    fun scanships():Int{
+        var listshig = arrayListOf<Ships>()
+        var k:Int
+        k=playingField.scanshipsx()
+
         post({ render() })
+        return k
     }
 
 
