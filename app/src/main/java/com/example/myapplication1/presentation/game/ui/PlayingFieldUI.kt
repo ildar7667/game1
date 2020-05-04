@@ -53,15 +53,22 @@ class PlayingFieldUI : IElementUI {
 
     }
 
-    fun identships(k: Int){
+    fun identships(k: List<Ships>){
         //listShips
-        for (i in 0..k)
+        //for (i in 0..(k-1))
            // for (j in 0..listShips[i].size)
                 //takes[listShips[i].part[j].x*10+listShips[i].part[j].y].state=2
-            takes[i].state=2
+           // takes[i].state=2
+        for (i in 0..(k.size-1))
+        {   for (j in 0..(k[i].part.size-1))
+        {
+            takes[k[i].part[j].x+k[i].part[j].y*10].state=2
+        }
+
+        }
     }
 
-    fun scanshipsx() : Int {
+    fun scanshipsx() : List<Ships> {
         var k:Int =1
         // var listShips =  mutableListOf<Ships>()
         for (i in 0..99)
@@ -73,36 +80,38 @@ class PlayingFieldUI : IElementUI {
                //горизонтальный
                if (i+1<100)
                if (takes[i+1].state==2) {
-                   listpart.add(PartShips(i % 10 + 1, i / 10, 2))
-                   takes[i+1].state=0
-                   }
-               if (i+2<100)
-               if (takes[i+2].state==2) {
-                   listpart.add(PartShips(i % 10 + 2, i / 10, 2))
-                   takes[i+2].state=0
-                   }
-               if (i+3<100)
-               if (takes[i+3].state==2) {
-                   listpart.add(PartShips(i % 10 + 3, i / 10, 2))
-                   takes[i+3].state=0
-                   }
+
+                       listpart.add(PartShips(i % 10 + 1, i / 10, 2))
+                       takes[i + 1].state = 0
+
+                       if (i + 2 < 100)
+                       if (takes[i + 2].state == 2) {
+                           listpart.add(PartShips(i % 10 + 2, i / 10, 2))
+                           takes[i + 2].state = 0
+
+                       if (i + 3 < 100)
+                       if (takes[i + 3].state == 2) {
+                           listpart.add(PartShips(i % 10 + 3, i / 10, 2))
+                           takes[i + 3].state = 0
+                       }
+               }}
 
                //вертикальный
                if (i+10<100)
                if (takes[i+10].state==2) {
                    listpart.add(PartShips(i % 10, (i + 10) / 10, 2))
                    takes[i+10].state=0
-                   }
+
                if (i+20<100)
                if (takes[i+20].state==2) {
                    listpart.add(PartShips(i % 10, (i + 20) / 10, 2))
                    takes[i+20].state=0
-               }
+
                if (i+30<100)
                if (takes[i+30].state==2) {
                    listpart.add(PartShips(i % 10, (i + 30) / 10, 2))
                    takes[i+30].state=0
-               }
+               }}}
 
 
                 listShips.add(Ships(1, 2, listpart))
@@ -113,14 +122,14 @@ class PlayingFieldUI : IElementUI {
                 //   val shipsfour = Ships(4, 1,listpart )
             }
 
-        for (i in 0..listShips.size){
-           takes[i].state=3
+        //for (i in 0..(listShips.size-1)){
+        //   takes[i].state=3
 
-        }
+       // }
 
     //StateGame.listShipsfin= listShips
         k=listShips.size
-        return k
+        return listShips
         //listShips.size
 
     }

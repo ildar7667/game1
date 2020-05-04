@@ -18,21 +18,29 @@
 
         <com.example.myapplication1.presentation.game.GameView
             android:id="@+id/gameView"
-            android:layout_width="340dp"
-            android:layout_height="268dp"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
             tools:layout_editor_absoluteX="35dp"
             tools:layout_editor_absoluteY="81dp"></com.example.myapplication1.presentation.game.GameView>
-            <Button
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+        <Button
                 android:id="@+id/butgameoffline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Авторасстановка"
+                android:layout_weight = "1"
+                android:text="Авто"
                 tools:layout_editor_absoluteX="57dp"
                 tools:layout_editor_absoluteY="398dp" />
         <Button
             android:id="@+id/butgameofflinenext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight = "1"
             android:text="Вперед!"
             tools:layout_editor_absoluteX="57dp"
             tools:layout_editor_absoluteY="398dp" />
@@ -40,9 +48,11 @@
             android:id="@+id/butscan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Скан кораблей"
+            android:layout_weight = "1"
+            android:text="Скан "
             tools:layout_editor_absoluteX="57dp"
             tools:layout_editor_absoluteY="398dp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,8 +66,9 @@
 
             <com.example.myapplication1.presentation.gameplay.GameViewPlayTwo
                 android:id="@+id/gameViewPlayTwo"
-                android:layout_width="203dp"
-                android:layout_height="180dp"></com.example.myapplication1.presentation.gameplay.GameViewPlayTwo>
+                android:layout_width="219dp"
+                android:layout_height="171dp"
+                android:visibility="invisible"></com.example.myapplication1.presentation.gameplay.GameViewPlayTwo>
     </LinearLayout>
 
     </LinearLayout>

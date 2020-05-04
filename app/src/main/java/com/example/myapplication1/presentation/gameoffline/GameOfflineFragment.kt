@@ -8,6 +8,7 @@ import android.view.SurfaceView
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.myapplication1.Base.ABaseFragment
@@ -76,7 +77,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
         }
 
         butscan.setOnClickListener{
-            var k:Int
+            var k : List<Ships>
             k=gameView.scanships()
            // GamePlay(k)
             //gameViewPlayTwo.k=k
@@ -84,6 +85,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
            // var Stg=StateGame()
            // Stg.k=k
             //Stg.start()
+            gameViewPlayTwo.isVisible=true
             gameViewPlayTwo.ident(k)
 
 

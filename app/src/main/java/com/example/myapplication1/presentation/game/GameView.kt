@@ -64,13 +64,13 @@ class GameView @JvmOverloads constructor(
             }
 
 
-    fun scanships():Int{
-        var listshig = arrayListOf<Ships>()
+    fun scanships(): List<Ships>{
+        var listshig : List<Ships>
         var k:Int
-        k=playingField.scanshipsx()
+        listshig=playingField.scanshipsx()
 
         post({ render() })
-        return k
+        return listshig
     }
 
 
