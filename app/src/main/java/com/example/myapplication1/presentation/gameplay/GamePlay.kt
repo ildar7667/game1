@@ -36,7 +36,7 @@ class GamePlay: ABaseActivity(), IGamePlay {
         setContentView(R.layout.activity_game_play)
 
         showGamePlay()
-        test()
+
     }
 
     override fun showGamePlay() {
@@ -52,8 +52,8 @@ class GamePlay: ABaseActivity(), IGamePlay {
      //  k=Stg.k
        //k=StateGame()
 
-       gameViewPlayTwo.k=3
-       gameViewPlayTwo.ident()
+       //gameViewPlayTwo.k=3
+       //gameViewPlayTwo.ident(3)
 
 
    }

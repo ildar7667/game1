@@ -31,15 +31,8 @@
         android:orientation="vertical"
         tools:layout_editor_absoluteX="5dp"
         tools:layout_editor_absoluteY="5dp"
-        android:id="@+id/gameplaytwolin"
-        android:layout_marginTop="15dp"   >
-
-             <com.example.myapplication1.presentation.gameplay.GameViewPlayTwo
-                 android:id="@+id/gameViewPlayTwo"
-                 android:layout_width="254dp"
-                 android:layout_height="219dp"
-                  />
-       </LinearLayout>
+        android:id="@+id/gameplaytwolin3"
+        android:layout_marginTop="15dp"   />
          </LinearLayout>
 
 

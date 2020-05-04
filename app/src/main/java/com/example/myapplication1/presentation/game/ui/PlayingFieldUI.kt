@@ -62,14 +62,14 @@ class PlayingFieldUI : IElementUI {
     }
 
     fun scanshipsx() : Int {
-
+        var k:Int =1
         // var listShips =  mutableListOf<Ships>()
         for (i in 0..99)
             if (takes[i].state == 2)
             {
                 var listpart = mutableListOf(PartShips(i % 10, i / 10, 2))
                   takes[i].state=0
-             var k=1
+
                //горизонтальный
                if (i+1<100)
                if (takes[i+1].state==2) {
@@ -119,7 +119,8 @@ class PlayingFieldUI : IElementUI {
         }
 
     //StateGame.listShipsfin= listShips
-        return 5
+        k=listShips.size
+        return k
         //listShips.size
 
     }

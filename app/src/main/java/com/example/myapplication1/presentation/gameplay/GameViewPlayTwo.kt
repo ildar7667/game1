@@ -27,7 +27,7 @@ class GameViewPlayTwo @JvmOverloads constructor(
 
     var onSelectListener: ((TakeUI) -> Unit)? = null
 
-    var k:Int=1
+
 
     init {
 
@@ -51,7 +51,7 @@ class GameViewPlayTwo @JvmOverloads constructor(
 
 
 
-    fun ident(){
+    fun ident(k:Int){
         playingField.identships(k)
         post({ render() })
     }

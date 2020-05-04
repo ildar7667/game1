@@ -18,11 +18,10 @@
 
         <com.example.myapplication1.presentation.game.GameView
             android:id="@+id/gameView"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_width="340dp"
+            android:layout_height="268dp"
             tools:layout_editor_absoluteX="35dp"
-            tools:layout_editor_absoluteY="81dp">
-        </com.example.myapplication1.presentation.game.GameView>
+            tools:layout_editor_absoluteY="81dp"></com.example.myapplication1.presentation.game.GameView>
             <Button
                 android:id="@+id/butgameoffline"
                 android:layout_width="match_parent"
@@ -45,11 +44,21 @@
             tools:layout_editor_absoluteX="57dp"
             tools:layout_editor_absoluteY="398dp" />
 
-        <TextView
-            android:id="@+id/TextViewGV"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="5dp"
+            tools:layout_editor_absoluteY="5dp"
+            android:id="@+id/gameplaytwolin"
+            android:layout_marginTop="15dp" >
+
+            <com.example.myapplication1.presentation.gameplay.GameViewPlayTwo
+                android:id="@+id/gameViewPlayTwo"
+                android:layout_width="203dp"
+                android:layout_height="180dp"></com.example.myapplication1.presentation.gameplay.GameViewPlayTwo>
+    </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
