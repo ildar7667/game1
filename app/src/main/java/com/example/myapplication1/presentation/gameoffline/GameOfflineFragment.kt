@@ -15,6 +15,7 @@ import com.example.myapplication1.Base.ABaseFragment
 import com.example.myapplication1.R
 import com.example.myapplication1.domain.di.components.DaggerAppComponent
 import com.example.myapplication1.presentation.game.GameView
+import com.example.myapplication1.presentation.game.ui.Gamer
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.Ships
 import com.example.myapplication1.presentation.gameplay.GamePlay
@@ -47,10 +48,16 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        var k1 : List<Ships> = mutableListOf<Ships>()
+        var k2 : List<Ships> = mutableListOf<Ships>()
+        var gamer1 = Gamer(1, k1)
+        var gamer2 = Gamer(1, k2)
+
+
 
 
         butgameoffline.setOnClickListener {
-
+            gameView.setsh()
             //val gv = GameView(Context)
 
             //presenter.gameoffline("Одиночная игра")
@@ -61,7 +68,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
             //GameView(gameView.context).isAttachedToWindow()
            // GameView(gameView.context)
             //GameView(gameView.context).setsh()
-            gameView.setsh()
+
             //val textss: TextView = findViewById(R.id.TextViewGV) as TextView
 
           //  TextViewGV.text="shipsfour.size"
@@ -77,8 +84,9 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
         }*/
 
         butscan.setOnClickListener{
-            var k : List<Ships>
-            k=gameView.scanships()
+
+            k1=gameView.scanships()
+
            // GamePlay(k)
             //gameViewPlayTwo.k=k
             //stat=StateGame(k)
@@ -86,13 +94,28 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
            // Stg.k=k
             //Stg.start()
             gameViewPlayTwo.isVisible=true
-            gameViewPlayTwo.ident(k)
+            gameViewPlayTwo.ident(k1)
+
+            gameView.setsh()
+            k2=gameView.scanships()
+
             butgameoffline.isVisible=false
             butscan.isVisible=false
             //butscan.isVisible=false
             //gameViewPlayTwo.width="200dp"
             //gameViewPlayTwo.isActivated=false
+            //gamer1= Gamer(1,k1)
+
+
         }
+
+        fun gameproc(){
+
+       //gamer1.ships[0].part
+
+        }
+
+
 
 
       /*

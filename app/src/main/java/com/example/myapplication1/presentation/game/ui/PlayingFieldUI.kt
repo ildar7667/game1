@@ -138,7 +138,7 @@ class PlayingFieldUI : IElementUI {
                }}}
 
 
-                listShips.add(Ships(1, 2, listpart))
+                listShips.add(Ships(1, 1, listpart))
 
                 //   k++
 
