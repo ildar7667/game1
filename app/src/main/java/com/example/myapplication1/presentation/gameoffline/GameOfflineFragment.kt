@@ -71,10 +71,10 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
                   }
 
-        butgameofflinenext.setOnClickListener{
+        /*butgameofflinenext.setOnClickListener{
 
             GamePlay.show()
-        }
+        }*/
 
         butscan.setOnClickListener{
             var k : List<Ships>
@@ -87,10 +87,13 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
             //Stg.start()
             gameViewPlayTwo.isVisible=true
             gameViewPlayTwo.ident(k)
-
-
-
+            butgameoffline.isVisible=false
+            butscan.isVisible=false
+            //butscan.isVisible=false
+            //gameViewPlayTwo.width="200dp"
+            //gameViewPlayTwo.isActivated=false
         }
+
 
       /*
         btnlogof.setOnClickListener{

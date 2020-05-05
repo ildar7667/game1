@@ -18,11 +18,12 @@ class PlayingFieldUI : IElementUI {
 
     companion object {
 
-        private val bgPaint = Paint().apply { color = Color.BLUE}
-        //Color.CCCCCC
+        private val bgPaint = Paint().apply { color=Color.parseColor("#ffffff")}
+        //Color.CCCCCC   color = Color.BLUE
         private val linePaint = Paint().apply {
-            color = Color.BLACK
-            strokeWidth = 3f
+           // color = Color.BLACK
+            color=Color.parseColor("#6600cc")
+            strokeWidth = 10f
         }
     }
 
@@ -64,6 +65,29 @@ class PlayingFieldUI : IElementUI {
         {
             takes[k[i].part[j].x+k[i].part[j].y*10].state=2
         }
+
+        }
+    }
+
+    fun drawships(k: List<Ships>) {
+        var x0: Int
+        var x1: Int
+        var y0: Int
+        var y1: Int
+        for (i in 0..(k.size - 1)) {
+            x0 = k[i].part[0].x
+            y0 = k[i].part[0].y
+
+            x1 = k[i].part[k[i].part.size - 1].x
+            y1 = k[i].part[k[i].part.size - 1].y
+
+          //  drawShip(x0, y0, x1, y1)
+            /*for (j in 0..(k[i].part.size-1))
+
+            takes[k[i].part[j].x+k[i].part[j].y*10].state=2
+        takes[i].part[0]
+
+        }*/
 
         }
     }
@@ -152,9 +176,9 @@ class PlayingFieldUI : IElementUI {
         var xx : Int = (xf/(width/10)).toInt()
         var yy : Int = (yf/(height/10)).toInt()
 
-        if (takes[yy*10-1+xx].state==2)
-        takes[yy*10-1+xx].state=3
-        else  takes[yy*10-1+xx].state=1
+        if (takes[yy*10-1+xx+1].state==2)
+        takes[yy*10-1+xx+1].state=3
+        else  takes[yy*10-1+xx+1].state=1
     }
 
     fun setshipsx (k: Int, len: Int) {
@@ -330,6 +354,12 @@ class PlayingFieldUI : IElementUI {
         val ih = itemHeight.toFloat()
         val w = width.toFloat()
         val h = height.toFloat()
+
+        canvas.drawLine( x.toFloat(), y.toFloat(), (x+width).toFloat(), y.toFloat(), linePaint)
+        canvas.drawLine( x.toFloat(), y.toFloat(), x.toFloat(), (y+height).toFloat(), linePaint)
+
+        canvas.drawLine( (x+width).toFloat(), y.toFloat(), (x+width).toFloat(), (y+height).toFloat(), linePaint)
+        canvas.drawLine( x.toFloat(), (y+height).toFloat(), (x+width).toFloat(), (y+height).toFloat(), linePaint)
 
         // vertical
        // canvas.drawLine(iw + x, 0f, iw + x, h, linePaint)

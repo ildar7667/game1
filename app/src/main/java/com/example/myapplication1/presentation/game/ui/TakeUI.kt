@@ -22,6 +22,7 @@ open class TakeUI : IElementUI {
         val paintBlack = Paint().apply { color = Color.BLACK }
         val paintGreen = Paint().apply { color = Color.GREEN }
         val paintGray = Paint().apply { color = Color.GRAY }
+        val paintPurple = Paint().apply { color=Color.parseColor("#6600ff")}
     }
 
     var x: Int = 0
@@ -53,7 +54,12 @@ open class TakeUI : IElementUI {
          val cx = x + hw
          val cy = y + h * 0.5f
 
-         canvas.drawCircle(cx, cy, hw, paintBlack)
+         canvas.drawLine (x,y,x,y+w,paintRed)
+         canvas.drawLine (x,y,x+h,y,paintRed)
+         canvas.drawLine (x+h,y,x+h,y+w,paintRed)
+         canvas.drawLine (x+h,y+w,x,y+w,paintRed)
+
+         //canvas.drawCircle(cx, cy, hw, paintBlack)
          canvas.drawCircle(cx, cy, hw * 0.8f, paintGray)
          canvas.drawCircle(cx, cy, hw * 0.6f, paintBlack)
          canvas.drawCircle(cx, cy, hw * 0.2f, paintRed)
@@ -67,10 +73,10 @@ open class TakeUI : IElementUI {
         val h = height.toFloat()
 
 
-        canvas.drawLine (x,y,x,y+w,paintRed)
-        canvas.drawLine (x,y,x+h,y,paintRed)
-        canvas.drawLine (x+h,y,x+h,y+w,paintRed)
-        canvas.drawLine (x+h,y+w,x,y+w,paintRed)
+        canvas.drawLine (x,y,x,y+w,paintPurple)
+        canvas.drawLine (x,y,x+h,y,paintPurple)
+        canvas.drawLine (x+h,y,x+h,y+w,paintPurple)
+        canvas.drawLine (x+h,y+w,x,y+w,paintPurple)
        //canvas.drawText("x",x,y, paintRed)
 
     }
@@ -82,9 +88,14 @@ open class TakeUI : IElementUI {
         val y = y.toFloat()
         val w = width.toFloat()
         val h = height.toFloat()
-
-        canvas.drawLine(x, y, x + w, y + h, paintRed)
-        canvas.drawLine(x + w, y, x, y + h, paintRed)
+        var k:Float
+        canvas.drawLine (x,y,x,y+w,paintPurple)
+        canvas.drawLine (x,y,x+h,y,paintPurple)
+        canvas.drawLine (x+h,y,x+h,y+w,paintPurple)
+        canvas.drawLine (x+h,y+w,x,y+w,paintPurple)
+        k=width.toFloat()/4
+        canvas.drawLine(x+k, y+k, x + w-k, y + h-k, paintRed)
+        canvas.drawLine(x + w-k, y+k, x+k, y + h-k, paintRed)
     }
 
     private fun renderZero(canvas: Canvas) {
@@ -93,11 +104,24 @@ open class TakeUI : IElementUI {
         val y = y.toFloat()
         val w = width.toFloat()
         val h = height.toFloat()
-        val hw = w * 0.5f
+        canvas.drawLine (x,y,x,y+w,paintPurple)
+        canvas.drawLine (x,y,x+h,y,paintPurple)
+        canvas.drawLine (x+h,y,x+h,y+w,paintPurple)
+        canvas.drawLine (x+h,y+w,x,y+w,paintPurple)
+        /*val hw = w * 0.5f
         val cx = x + hw
         val cy = y + h * 0.5f
 
         canvas.drawCircle(cx, cy, hw, paintBlue)
-        canvas.drawCircle(cx, cy, hw * 0.9f, paintYellow)
+        canvas.drawCircle(cx, cy, hw * 0.9f, paintYellow)*/
+        canvas.drawLine (x,y,x,y+w, paintRed)
+        canvas.drawLine (x,y,x+h,y,paintRed)
+        canvas.drawLine (x+h,y,x+h,y+w,paintRed)
+        canvas.drawLine (x+h,y+w,x,y+w,paintRed)
+
+    }
+
+    fun drawShip(x0:Int,y0:Int,x1:Int,y1:Int){
+
     }
 }

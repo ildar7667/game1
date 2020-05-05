@@ -9,20 +9,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
+
 
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="5dp"
-        android:id="@+id/gameoffline">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:id="@+id/gameoffline"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:orientation="horizontal"
+
+            >
 
         <com.example.myapplication1.presentation.game.GameView
             android:id="@+id/gameView"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="300dp"
-            tools:layout_editor_absoluteX="35dp"
-            tools:layout_editor_absoluteY="81dp"></com.example.myapplication1.presentation.game.GameView>
 
+            >
+
+        </com.example.myapplication1.presentation.game.GameView>
+
+            </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -36,20 +49,13 @@
                 android:text="Авто"
                 tools:layout_editor_absoluteX="57dp"
                 tools:layout_editor_absoluteY="398dp" />
-        <Button
-            android:id="@+id/butgameofflinenext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight = "1"
-            android:text="Вперед!"
-            tools:layout_editor_absoluteX="57dp"
-            tools:layout_editor_absoluteY="398dp" />
+
         <Button
             android:id="@+id/butscan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight = "1"
-            android:text="Скан "
+            android:text="в бой"
             tools:layout_editor_absoluteX="57dp"
             tools:layout_editor_absoluteY="398dp" />
         </LinearLayout>
@@ -66,8 +72,8 @@
 
             <com.example.myapplication1.presentation.gameplay.GameViewPlayTwo
                 android:id="@+id/gameViewPlayTwo"
-                android:layout_width="219dp"
-                android:layout_height="171dp"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
                 android:visibility="invisible"></com.example.myapplication1.presentation.gameplay.GameViewPlayTwo>
     </LinearLayout>
 

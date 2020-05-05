@@ -107,10 +107,14 @@ class GameView @JvmOverloads constructor(
         val min = min(width, height)
         val mh = min * 0.5f
 
-        playingField.x = (cx - mh).toInt()
+       /* playingField.x = (cx - mh).toInt()
         playingField.y = (cy - mh).toInt()
         playingField.width = min
-        playingField.height = min
+        playingField.height = min*/
+        playingField.x = x.toInt()
+        playingField.y = y.toInt()
+        playingField.width = width
+        playingField.height = height
 
         playingField.render(canvas)
     }
@@ -122,7 +126,7 @@ class GameView @JvmOverloads constructor(
     }
 
     private fun onClick(x: Float, y: Float): Boolean {
-       // setsh()
+
 
         playingField.onClickSquare(x, y)
         post({ render() })
