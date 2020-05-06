@@ -13,6 +13,7 @@ import com.example.myapplication1.presentation.game.ui.Ships
 import com.example.myapplication1.presentation.game.ui.TakeUI
 import kotlinx.android.synthetic.main.gameoffline.*
 import kotlinx.android.synthetic.main.gameoffline.view.*
+import java.util.concurrent.TimeUnit
 import kotlin.math.min
 
 class GameViewPlayTwo @JvmOverloads constructor(
@@ -26,7 +27,7 @@ class GameViewPlayTwo @JvmOverloads constructor(
     private val playingField = PlayingFieldUI()
 
     var onSelectListener: ((TakeUI) -> Unit)? = null
-
+    var stek:Int = 0
 
 
     init {
@@ -96,16 +97,30 @@ class GameViewPlayTwo @JvmOverloads constructor(
     }
 
     private fun onMove(x: Float, y: Float) : Boolean {
+
         playingField.onMoveSquare(x, y)
         post({ render() })
         return true
     }
 
+
+    fun shotsquare (x:Int, y:Int):Boolean {
+        var ret: Boolean = true
+        ret=playingField.shotxy(x,y)
+        post({ render() })
+        return ret
+
+    }
+
     private fun onClick(x: Float, y: Float): Boolean {
         // setsh()
 
+        if (stek==1){
         playingField.onClickSquare(x, y)
         post({ render() })
+        stek=0
+           // gameView.stek=1
+        }
 
         val listener = onSelectListener ?: return false
 

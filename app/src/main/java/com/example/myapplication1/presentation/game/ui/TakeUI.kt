@@ -12,6 +12,7 @@ open class TakeUI : IElementUI {
         const val STATE_CROSS = 1 //выстрел по пустому полю
         const val STATE_ZERO = 2 //стоит корабль
         const val STATE_PADDED = 3 //выстрел по кораблю
+        const val STATE_UNDEFZERO = 4 //стоит корабль, но его не видно
 
         val paintRed = Paint().apply {
             color = Color.RED
@@ -41,6 +42,7 @@ open class TakeUI : IElementUI {
             STATE_ZERO -> renderZero(canvas)
             STATE_UNDEFINED -> renderUnder(canvas)
             STATE_PADDED -> renderPadded(canvas)
+            STATE_UNDEFZERO -> renderUnder(canvas)
         }
     }
 

@@ -6,6 +6,7 @@ import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import com.example.myapplication1.R
 import com.example.myapplication1.presentation.game.model.GameState
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
@@ -13,6 +14,8 @@ import com.example.myapplication1.presentation.game.ui.Ships
 import kotlinx.android.synthetic.main.gameoffline.*
 import kotlinx.android.synthetic.main.gameoffline.view.*
 import com.example.myapplication1.presentation.game.ui.TakeUI
+import com.example.myapplication1.presentation.gameoffline.GameOfflineFragment
+import com.example.myapplication1.presentation.gameplay.GameViewPlayTwo
 import kotlin.math.min
 
 class GameView @JvmOverloads constructor(
@@ -26,12 +29,13 @@ class GameView @JvmOverloads constructor(
      val playingField = PlayingFieldUI()
 
     var onSelectListener: ((TakeUI) -> Unit)? = null
+    var stek:Int = 1
 
     init {
 
         holder.addCallback(this)
 
-        setOnTouchListener { _, event ->
+       /* setOnTouchListener { _, event ->
 
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
@@ -39,11 +43,14 @@ class GameView @JvmOverloads constructor(
                // MotionEvent.ACTION_MOVE -> onMove (event.x, event.y)
                 else -> false
             }
-        }
+        }*/
     }
 
 
-
+    fun hiddenships(k:List<Ships>){
+        playingField.identhiddenships(k)
+        post({ render() })
+    }
 
     fun setsh(){
         playingField.setshipsx(1,4)
@@ -125,13 +132,17 @@ class GameView @JvmOverloads constructor(
         return true
     }
 
-    private fun onClick(x: Float, y: Float): Boolean {
+    fun onClick(x: Float, y: Float): Boolean {
+        var ret: Boolean = true
+        if (stek==1) {
+            ret = playingField.onClickSquare(x, y)
+            post({ render() })
+            //gameViewPlayTwo.isVisible=false
+            //gameViewPlayTwo.stek=1
+            stek=0
+        }
 
-
-        playingField.onClickSquare(x, y)
-        post({ render() })
-
-        val listener = onSelectListener ?: return false
+       /* val listener = onSelectListener ?: return false
 
         playingField.onClick(x, y)?.let {
             if (it.state == TakeUI.STATE_UNDEFINED)
@@ -140,7 +151,8 @@ class GameView @JvmOverloads constructor(
             return true
         }
 
-        return false
+        return false*/
+        return ret
     }
 
 

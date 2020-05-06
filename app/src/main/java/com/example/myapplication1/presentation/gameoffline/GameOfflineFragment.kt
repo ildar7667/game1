@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.os.Bundle
 import android.view.Gravity
+import android.view.MotionEvent
 import android.view.SurfaceView
 import android.view.View
 import android.widget.TextView
@@ -24,9 +25,9 @@ import com.example.myapplication1.presentation.gameplay.StateGame
 import com.example.myapplication1.presentation.main.MainActivity
 import kotlinx.android.synthetic.main.activity_game_play.*
 import kotlinx.android.synthetic.main.gameoffline.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-
-
+import kotlin.random.Random
 
 
 class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
@@ -54,7 +55,16 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
         var gamer2 = Gamer(1, k2)
 
 
+        gameView.setOnTouchListener { _, event ->
 
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> true
+                MotionEvent.ACTION_UP -> onClick(event.x, event.y)
+                // MotionEvent.ACTION_MOVE -> onMove (event.x, event.y)
+                else -> false
+            }
+
+        }
 
         butgameoffline.setOnClickListener {
             gameView.setsh()
@@ -98,6 +108,8 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
             gameView.setsh()
             k2=gameView.scanships()
+            gameView.hiddenships(k2)
+
 
             butgameoffline.isVisible=false
             butscan.isVisible=false
@@ -105,15 +117,12 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
             //gameViewPlayTwo.width="200dp"
             //gameViewPlayTwo.isActivated=false
             //gamer1= Gamer(1,k1)
+          //  gameproc()
 
 
         }
 
-        fun gameproc(){
 
-       //gamer1.ships[0].part
-
-        }
 
 
 
@@ -123,6 +132,36 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
             MainActivity.show()
         }
         */
+    }
+
+
+    fun gameproc(){
+
+       // gameView.stek=1
+       // gameViewPlayTwo.stek=1
+
+
+        //gamer1.ships[0].part
+
+    }
+
+    private fun onClick(x: Float, y: Float): Boolean {
+       //var shotship:Boolean=true
+        gameView.stek=1
+
+        if (gameView.onClick(x,y)==false) {
+
+            do {
+                val randome = Random(System.nanoTime())
+                var x: Int = randome.nextInt(10)
+                var y: Int = randome.nextInt(10)
+
+               // TimeUnit.SECONDS.sleep(1)
+               // Thread.sleep(2000)
+            } while (gameViewPlayTwo.shotsquare(x, y)==true)
+            }
+
+        return true
     }
 
     override fun onSuccess() {

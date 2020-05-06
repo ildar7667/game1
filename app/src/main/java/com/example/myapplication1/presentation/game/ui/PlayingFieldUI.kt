@@ -28,7 +28,7 @@ class PlayingFieldUI : IElementUI {
     }
 
     private val takes = mutableListOf<TakeUI>()
-    val listShips =  mutableListOf<Ships>()
+    //val listShips =  mutableListOf<Ships>()
     //private val bgPaint = Paint().apply { color = Color.BLUE }
 
     var x: Int = 0
@@ -69,6 +69,21 @@ class PlayingFieldUI : IElementUI {
         }
     }
 
+    fun identhiddenships (k: List<Ships>){
+        //listShips
+        //for (i in 0..(k-1))
+        // for (j in 0..listShips[i].size)
+        //takes[listShips[i].part[j].x*10+listShips[i].part[j].y].state=2
+        // takes[i].state=2
+        for (i in 0..(k.size-1))
+        {   for (j in 0..(k[i].part.size-1))
+        {
+            takes[k[i].part[j].x+k[i].part[j].y*10].state=4
+        }
+
+        }
+    }
+
     fun drawships(k: List<Ships>) {
         var x0: Int
         var x1: Int
@@ -95,6 +110,7 @@ class PlayingFieldUI : IElementUI {
     fun scanshipsx() : List<Ships> {
         var k:Int =1
         // var listShips =  mutableListOf<Ships>()
+        val listShips =  mutableListOf<Ships>()
         for (i in 0..99)
             if (takes[i].state == 2)
             {
@@ -168,7 +184,26 @@ class PlayingFieldUI : IElementUI {
         //canvas.drawLine(x, y, x, y, linePaint)
     }
 
-    fun onClickSquare(x: Float, y: Float){
+
+    fun shotxy (x:Int, y:Int):Boolean {
+        if ((takes[y*10-1+x+1].state==2) || (takes[y*10-1+x+1].state==4) || (takes[y*10-1+x+1].state==3))
+        {
+            takes[y * 10 - 1 + x + 1].state = 3
+            return true
+        }
+
+        if (takes[y * 10 - 1 + x + 1].state == 1) return true
+
+        if (takes[y * 10 - 1 + x + 1].state == 0)
+        {
+            takes[y * 10 - 1 + x + 1].state = 1
+            return false
+        }
+
+        return true
+    }
+
+    fun onClickSquare(x: Float, y: Float):Boolean {
         var xf: Float = x
         var yf: Float = y
 
@@ -176,9 +211,11 @@ class PlayingFieldUI : IElementUI {
         var xx : Int = (xf/(width/10)).toInt()
         var yy : Int = (yf/(height/10)).toInt()
 
-        if (takes[yy*10-1+xx+1].state==2)
+        return shotxy(xx,yy)
+
+       /* if (takes[yy*10-1+xx+1].state==2)
         takes[yy*10-1+xx+1].state=3
-        else  takes[yy*10-1+xx+1].state=1
+        else  takes[yy*10-1+xx+1].state=1*/
     }
 
     fun setshipsx (k: Int, len: Int) {
