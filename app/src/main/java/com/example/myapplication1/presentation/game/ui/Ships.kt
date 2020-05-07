@@ -1,8 +1,8 @@
 package com.example.myapplication1.presentation.game.ui
 
-class Ships (size:Int, state:Int, part: List<PartShips> ) {
+class Ships (size:Int, state:Int, part: MutableList<PartShips> ) {
     //state - 0,1
-    val size: Int = size
-    val state: Int = state
-    val part: List<PartShips> = part
+    var size: Int = size
+    var state: Int = state
+    var part: MutableList<PartShips> = part
 }

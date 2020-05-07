@@ -52,7 +52,7 @@ class GameViewPlayTwo @JvmOverloads constructor(
 
 
 
-    fun ident(k:List<Ships>){
+    fun ident(k:MutableList<Ships>){
         playingField.identships(k)
         post({ render() })
     }

@@ -17,6 +17,7 @@ import com.example.myapplication1.R
 import com.example.myapplication1.domain.di.components.DaggerAppComponent
 import com.example.myapplication1.presentation.game.GameView
 import com.example.myapplication1.presentation.game.ui.Gamer
+import com.example.myapplication1.presentation.game.ui.PartShips
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.Ships
 import com.example.myapplication1.presentation.gameplay.GamePlay
@@ -46,13 +47,16 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
     override fun getViewId() = R.layout.gameoffline
 
+    var k1  = mutableListOf<Ships>()
+    var k2  = mutableListOf<Ships>()
+    var gamer1 = Gamer(1, k1)
+    var gamer2 = Gamer(1, k2)
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var k1 : List<Ships> = mutableListOf<Ships>()
-        var k2 : List<Ships> = mutableListOf<Ships>()
-        var gamer1 = Gamer(1, k1)
-        var gamer2 = Gamer(1, k2)
+
 
 
         gameView.setOnTouchListener { _, event ->
@@ -97,7 +101,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
             k1=gameView.scanships()
 
-           // GamePlay(k)
+            // GamePlay(k)
             //gameViewPlayTwo.k=k
             //stat=StateGame(k)
            // var Stg=StateGame()
@@ -107,6 +111,8 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
             gameViewPlayTwo.ident(k1)
 
             gameView.setsh()
+
+
             k2=gameView.scanships()
             gameView.hiddenships(k2)
 
@@ -162,6 +168,29 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
             }
 
         return true
+    }
+
+    fun luckyshot (listship: MutableList<Ships>, x:Int, y:Int) :Int{ //возвращает номер корабля
+        var k:Int=0
+
+      //  var listships: MutableList<Ships> = listship
+        for (i in 0..listship.size)
+            for (j in 0..listship[i].part.size)
+                if ((listship[i].part[j].x==x) && (listship[i].part[j].y==y))
+                {k=i
+                 listship[i].part[j].state=0
+                }
+      return k
+    }
+
+    fun chekkilledship (listship: MutableList<Ships>,k:Int):Boolean{ //проверяет убит ли корабль
+        var  n: Int=0
+        for (i in 0..listship[k].part.size){
+            if  (listship[k].part[i].state==0) n++
+        }
+        if (listship[k].part.size==n)
+            return false
+        else return true
     }
 
     override fun onSuccess() {

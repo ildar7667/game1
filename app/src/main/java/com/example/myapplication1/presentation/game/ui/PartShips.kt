@@ -1,9 +1,9 @@
 package com.example.myapplication1.presentation.game.ui
 
 class PartShips (x: Int, y: Int, state:Int) {
-    val x: Int = x
-    val y: Int = y
-    val state: Int = state
+    var x: Int = x
+    var y: Int = y
+    var state: Int = state
 
-
+//2 целый, 0 подбитый
 }

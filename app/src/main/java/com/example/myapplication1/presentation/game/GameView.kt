@@ -47,7 +47,7 @@ class GameView @JvmOverloads constructor(
     }
 
 
-    fun hiddenships(k:List<Ships>){
+    fun hiddenships(k:MutableList<Ships>){
         playingField.identhiddenships(k)
         post({ render() })
     }
@@ -71,8 +71,8 @@ class GameView @JvmOverloads constructor(
             }
 
 
-    fun scanships(): List<Ships>{
-        var listshig : List<Ships>
+    fun scanships(): MutableList<Ships>{
+        var listshig : MutableList<Ships>
         var k:Int
         listshig=playingField.scanshipsx()
 
