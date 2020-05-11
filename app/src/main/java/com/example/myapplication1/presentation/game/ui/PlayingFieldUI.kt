@@ -27,6 +27,7 @@ class PlayingFieldUI : IElementUI {
         }
     }
 
+
     private val takes = mutableListOf<TakeUI>()
     //val listShips =  mutableListOf<Ships>()
     //private val bgPaint = Paint().apply { color = Color.BLUE }
@@ -67,6 +68,26 @@ class PlayingFieldUI : IElementUI {
         }
 
         }
+    }
+
+    fun shotaroundship (k: MutableList<PartShips>) {
+        var x1: Int = k[0].x-1
+        var x2: Int = k[k.size-1].x+1
+
+        var y1: Int = k[0].y-1
+        var y2: Int = k[k.size-1].y+1
+
+        if (x1==-1) x1=0
+        if (x2==10) x2=9
+
+        if (y1==-1) y1=0
+        if (y2==10) y2=9
+
+        for (i in x1..x2)
+            for (j in y1..y2)
+                shotxy(i,j)
+
+
     }
 
     fun identhiddenships (k: MutableList<Ships>){
@@ -116,7 +137,7 @@ class PlayingFieldUI : IElementUI {
             {
                 var listpart = mutableListOf(PartShips(i % 10, i / 10, 2))
                   takes[i].state=0
-
+//x 0..9, y 0..9
                //горизонтальный
                if (i+1<100)
                if (takes[i+1].state==2) {
@@ -185,25 +206,25 @@ class PlayingFieldUI : IElementUI {
     }
 
 
-    fun shotxy (x:Int, y:Int):Boolean {
+    fun shotxy (x:Int, y:Int):Int {  //x 0..9, y 0..9
         if ((takes[y*10-1+x+1].state==2) || (takes[y*10-1+x+1].state==4) || (takes[y*10-1+x+1].state==3))
         {
             takes[y * 10 - 1 + x + 1].state = 3
-            return true
+            return 1
         }
 
-        if (takes[y * 10 - 1 + x + 1].state == 1) return true
+        if (takes[y * 10 - 1 + x + 1].state == 1) return 3
 
         if (takes[y * 10 - 1 + x + 1].state == 0)
         {
             takes[y * 10 - 1 + x + 1].state = 1
-            return false
+            return 2
         }
 
-        return true
+        return 2
     }
 
-    fun onClickSquare(x: Float, y: Float):Boolean {
+    fun onClickSquare(x: Float, y: Float):Int {
         var xf: Float = x
         var yf: Float = y
 
@@ -216,6 +237,12 @@ class PlayingFieldUI : IElementUI {
        /* if (takes[yy*10-1+xx+1].state==2)
         takes[yy*10-1+xx+1].state=3
         else  takes[yy*10-1+xx+1].state=1*/
+    }
+
+    fun xyfloattointPF (x:Float,y: Float): Pair <Int,Int>
+    {
+
+        return   Pair((x/(width/10)).toInt(), (y/(height/10)).toInt())
     }
 
     fun setshipsx (k: Int, len: Int) {

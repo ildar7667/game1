@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import com.example.myapplication1.R
 import com.example.myapplication1.presentation.game.model.GameState
+import com.example.myapplication1.presentation.game.ui.PartShips
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.Ships
 import kotlinx.android.synthetic.main.gameoffline.*
@@ -80,7 +81,10 @@ class GameView @JvmOverloads constructor(
         return listshig
     }
 
+   fun shotaroundshipGV (k: MutableList<PartShips>) {
+    playingField.shotaroundship(k)
 
+   }
 
     fun render() {
 
@@ -132,8 +136,8 @@ class GameView @JvmOverloads constructor(
         return true
     }
 
-    fun onClick(x: Float, y: Float): Boolean {
-        var ret: Boolean = true
+    fun onClick(x: Float, y: Float): Int {
+        var ret: Int = 0
         if (stek==1) {
             ret = playingField.onClickSquare(x, y)
             post({ render() })
@@ -142,17 +146,22 @@ class GameView @JvmOverloads constructor(
             stek=0
         }
 
-       /* val listener = onSelectListener ?: return false
 
-        playingField.onClick(x, y)?.let {
-            if (it.state == TakeUI.STATE_UNDEFINED)
-                listener(it)
-
-            return true
-        }
-
-        return false*/
         return ret
+    }
+
+    fun shotsquare (x:Int, y:Int):Int {
+        var ret: Int=0
+        ret=playingField.shotxy(x,y)
+        post({ render() })
+        return ret
+
+    }
+
+    fun xyfloattoint (x:Float,y: Float): Pair <Int,Int>
+    {
+
+       return   playingField.xyfloattointPF (x,y)
     }
 
 

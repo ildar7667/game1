@@ -71,127 +71,93 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
         }
 
         butgameoffline.setOnClickListener {
+            gameView.scanships()
             gameView.setsh()
-            //val gv = GameView(Context)
-
-            //presenter.gameoffline("Одиночная игра")
-            //MainActivity.show()
-            // GameView.onAttachedToWindow()
-            //gv.render()
-           // gameView.render()
-            //GameView(gameView.context).isAttachedToWindow()
-           // GameView(gameView.context)
-            //GameView(gameView.context).setsh()
-
-            //val textss: TextView = findViewById(R.id.TextViewGV) as TextView
-
-          //  TextViewGV.text="shipsfour.size"
-//val shipsf : Ships = setshipsfour(5)
-
-            // text.setText("size")
 
                   }
 
-        /*butgameofflinenext.setOnClickListener{
-
-            GamePlay.show()
-        }*/
 
         butscan.setOnClickListener{
 
             k1=gameView.scanships()
 
-            // GamePlay(k)
-            //gameViewPlayTwo.k=k
-            //stat=StateGame(k)
-           // var Stg=StateGame()
-           // Stg.k=k
-            //Stg.start()
             gameViewPlayTwo.isVisible=true
             gameViewPlayTwo.ident(k1)
 
             gameView.setsh()
 
-
             k2=gameView.scanships()
             gameView.hiddenships(k2)
 
-
             butgameoffline.isVisible=false
             butscan.isVisible=false
-            //butscan.isVisible=false
-            //gameViewPlayTwo.width="200dp"
-            //gameViewPlayTwo.isActivated=false
-            //gamer1= Gamer(1,k1)
-          //  gameproc()
-
 
         }
-
-
-
-
-
-
-      /*
-        btnlogof.setOnClickListener{
-            MainActivity.show()
-        }
-        */
     }
 
 
-    fun gameproc(){
-
-       // gameView.stek=1
-       // gameViewPlayTwo.stek=1
-
-
-        //gamer1.ships[0].part
-
-    }
 
     private fun onClick(x: Float, y: Float): Boolean {
-       //var shotship:Boolean=true
+
         gameView.stek=1
-
-        if (gameView.onClick(x,y)==false) {
-
-            do {
-                val randome = Random(System.nanoTime())
-                var x: Int = randome.nextInt(10)
-                var y: Int = randome.nextInt(10)
-
-               // TimeUnit.SECONDS.sleep(1)
-               // Thread.sleep(2000)
-            } while (gameViewPlayTwo.shotsquare(x, y)==true)
-            }
-
+        when (gameView.onClick(x,y))
+        {
+            1 -> luckyshot (x,y)
+            2 -> fall()
+                 }
         return true
     }
 
-    fun luckyshot (listship: MutableList<Ships>, x:Int, y:Int) :Int{ //возвращает номер корабля
-        var k:Int=0
+    fun luckyshot (x:Float,y:Float) {
 
-      //  var listships: MutableList<Ships> = listship
-        for (i in 0..listship.size)
-            for (j in 0..listship[i].part.size)
+        k2[numbership(k2, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first].part[numbership(k2, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).second].state=0
+        if  (chekkilledship(k2[numbership(k2, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first]))
+            gameView.shotaroundshipGV(k2[numbership(k2, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first].part)
+    }
+
+    fun fall(){
+        var result:Int=0
+        do {
+            val randome = Random(System.nanoTime())
+            var x: Int = randome.nextInt(10)
+            var y: Int = randome.nextInt(10)
+
+            // TimeUnit.SECONDS.sleep(1)
+            // Thread.sleep(2000)
+            result=gameViewPlayTwo.shotsquare(x, y)
+        } while (result==1 || result==3)
+
+    }
+
+    fun numbership (listship: MutableList<Ships>, x:Int, y:Int) :Pair <Int, Int> { //возвращает номер корабля, по которому попал выстрел от 0 по 9. И номер палубы
+        var shotship:Int=0
+        var shotpart:Int=0
+
+            for (i in (0..listship.size-1))
+            for (j in 0..(listship[i].part.size-1))
                 if ((listship[i].part[j].x==x) && (listship[i].part[j].y==y))
-                {k=i
-                 listship[i].part[j].state=0
+                {shotship=i
+                    shotpart=j
+                 //listship[i].part[j].state=0
                 }
-      return k
+      return Pair(shotship, shotpart)
     }
 
-    fun chekkilledship (listship: MutableList<Ships>,k:Int):Boolean{ //проверяет убит ли корабль
+    fun chekkilledship (ship: Ships):Boolean{ //проверяет убит ли корабль, true- убит
         var  n: Int=0
-        for (i in 0..listship[k].part.size){
-            if  (listship[k].part[i].state==0) n++
+        for (i in 0..(ship.part.size-1))
+            if  (ship.part[i].state==0)
+        n++
+
+        if (ship.part.size==n)
+        {
+            ship.state=0
+            return true
         }
-        if (listship[k].part.size==n)
-            return false
-        else return true
-    }
+
+      return false
+
+      }
 
     override fun onSuccess() {
         toast("SUCCESS")

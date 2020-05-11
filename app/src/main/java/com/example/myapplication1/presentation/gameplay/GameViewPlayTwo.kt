@@ -104,8 +104,8 @@ class GameViewPlayTwo @JvmOverloads constructor(
     }
 
 
-    fun shotsquare (x:Int, y:Int):Boolean {
-        var ret: Boolean = true
+    fun shotsquare (x:Int, y:Int):Int {
+        var ret: Int
         ret=playingField.shotxy(x,y)
         post({ render() })
         return ret
