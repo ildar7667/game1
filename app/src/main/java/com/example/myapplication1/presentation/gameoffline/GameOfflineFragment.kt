@@ -47,11 +47,17 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
     override fun getViewId() = R.layout.gameoffline
 
-    var k1  = mutableListOf<Ships>()
-    var k2  = mutableListOf<Ships>()
-    var gamer1 = Gamer(1, k1)
-    var gamer2 = Gamer(1, k2)
+   // var k1  = mutableListOf<Ships>()
+    //var k2  = mutableListOf<Ships>()
+    var gamer1 = Gamer(1, mutableListOf<Ships>())
+    var gamer2 = Gamer(1, mutableListOf<Ships>())
 
+    var a:Int=20
+    var b:Int=20
+    var vec:Int=0
+    var len:Int=0
+
+    val randome = Random(System.nanoTime())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -79,15 +85,17 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
         butscan.setOnClickListener{
 
-            k1=gameView.scanships()
+           // k1=gameView.scanships()
+
+            gamer1.ships=gameView.scanships()
 
             gameViewPlayTwo.isVisible=true
-            gameViewPlayTwo.ident(k1)
+            gameViewPlayTwo.ident(gamer1.ships)
 
             gameView.setsh()
 
-            k2=gameView.scanships()
-            gameView.hiddenships(k2)
+            gamer2.ships=gameView.scanships()
+            gameView.hiddenships(gamer2.ships)
 
             butgameoffline.isVisible=false
             butscan.isVisible=false
@@ -102,30 +110,130 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
         gameView.stek=1
         when (gameView.onClick(x,y))
         {
-            1 -> luckyshot (x,y)
+            1 -> luckyshotgV (x,y)
             2 -> fall()
                  }
         return true
     }
 
-    fun luckyshot (x:Float,y:Float) {
+    fun luckyshotgV (x:Float,y:Float) {
 
-        k2[numbership(k2, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first].part[numbership(k2, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).second].state=0
-        if  (chekkilledship(k2[numbership(k2, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first]))
-            gameView.shotaroundshipGV(k2[numbership(k2, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first].part)
+        gamer2.ships[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first].part[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).second].state=0
+        if  (chekkilledship(gamer2.ships[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first]))
+            gameView.shotaroundshipGV(gamer2.ships[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first].part)
+
+        //if (chekkilledgamer(gamer2))
+       // {gameViewPlayTwo.isVisible=false
+       //     gameView.isVisible=false
+        //}
+    }
+
+    fun luckyshotgVPT (x:Int,y:Int):Boolean {
+
+        gamer1.ships[numbership(gamer1.ships, x, y).first].part[numbership(gamer1.ships, x,y).second].state=0
+        if  (chekkilledship(gamer1.ships[numbership(gamer1.ships, x,y ).first])) //если убит корабль, то расстреляны соседние ячейки
+            gameViewPlayTwo.shotaroundshipGVPT(gamer1.ships[numbership(gamer1.ships, x,y).first].part)
+        return chekkilledship(gamer1.ships[numbership(gamer1.ships, x,y ).first])
     }
 
     fun fall(){
         var result:Int=0
-        do {
-            val randome = Random(System.nanoTime())
-            var x: Int = randome.nextInt(10)
-            var y: Int = randome.nextInt(10)
+        var x: Int = 0
+        var y: Int = 0
+
+
+        do {   x = randome.nextInt(10)
+               y = randome.nextInt(10)
 
             // TimeUnit.SECONDS.sleep(1)
             // Thread.sleep(2000)
-            result=gameViewPlayTwo.shotsquare(x, y)
-        } while (result==1 || result==3)
+                result=gameViewPlayTwo.shotsquare(x, y)
+
+            if (result==1)
+               if (luckyshotgVPT(x,y)!=true) //если корабль не убит
+               {
+                   a = x
+                   b = y
+                   len = 1
+                   if (a - 1 != -1) {
+                       result = gameViewPlayTwo.shotsquare(a - 1, b)
+                       if (result == 1) {
+                           vec = 4 //влево
+                           len = 2
+
+                         }
+
+                         }
+                         else if (a+1!=10 || result==2) { //попал повторно в пусто поле
+                       result = gameViewPlayTwo.shotsquare(a + 1, b)
+                       if (result == 1) {
+                           vec = 2 //вправо
+                           len = 2
+                               }
+                            }
+                                 else if (b+1!=10 || result==2) { //попал повторно в пусто поле
+                       result = gameViewPlayTwo.shotsquare(a , b+1)
+                       if (result == 1) {
+                           vec = 3 //вниз
+                           len = 2
+                       }
+                   }
+                              else if (b-1!=-1 || result==2) { //попал повторно в пусто поле
+                               result = gameViewPlayTwo.shotsquare(a , b-1)
+                              if (result == 1) {
+                               vec = 1 //вверх
+                               len = 2
+                                }
+                   }
+
+               }
+            /*
+                else {
+                      a=x
+                      b=y
+                     if (vec==0)
+                           {    if (a-1!=-1)
+                                 {  result=gameViewPlayTwo.shotsquare(a-1, b)
+
+                                 }
+
+                           }
+
+                     }
+
+            }
+              */
+
+            } while (result==4 || result==3 || result==1)
+
+
+
+       /* if (result==1) //попал в корабль, добавить проверку если корабль не убит сразу
+        {   a=x
+            b=y
+            len=1
+
+            if (vec==0)
+            {when (randome.nextInt(4))
+                 { 0-> {}
+
+                 }
+
+            }
+
+        }*/
+      //  else
+        /*{
+
+            if (vec==0)
+                when (randome.nextInt(3))
+                {
+
+
+                }
+
+        }*/
+
 
     }
 
@@ -158,6 +266,18 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
       return false
 
       }
+
+
+    fun chekkilledgamer (gamer: Gamer):Boolean {
+        var n=0
+
+        for (i in 0..gamer.ships.size-1)
+            if (gamer.ships[i].state==1) {
+                n = 1
+                return false
+            }
+        return true
+    }
 
     override fun onSuccess() {
         toast("SUCCESS")

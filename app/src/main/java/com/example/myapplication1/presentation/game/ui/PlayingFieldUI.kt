@@ -207,18 +207,22 @@ class PlayingFieldUI : IElementUI {
 
 
     fun shotxy (x:Int, y:Int):Int {  //x 0..9, y 0..9
-        if ((takes[y*10-1+x+1].state==2) || (takes[y*10-1+x+1].state==4) || (takes[y*10-1+x+1].state==3))
+        if ((takes[y*10-1+x+1].state==2) || (takes[y*10-1+x+1].state==4))
         {
             takes[y * 10 - 1 + x + 1].state = 3
-            return 1
+            return 1    //попал в корабль
         }
 
-        if (takes[y * 10 - 1 + x + 1].state == 1) return 3
+        if (takes[y*10-1+x+1].state==3)
+            return 4  //попал в подбитый корабль
+
+        if (takes[y * 10 - 1 + x + 1].state == 1)
+            return 3 //попал повторно в пустое поле
 
         if (takes[y * 10 - 1 + x + 1].state == 0)
         {
             takes[y * 10 - 1 + x + 1].state = 1
-            return 2
+            return 2 //попал в пустое поле
         }
 
         return 2

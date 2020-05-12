@@ -8,6 +8,7 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import com.example.myapplication1.presentation.game.GameView
 import com.example.myapplication1.presentation.game.model.GameState
+import com.example.myapplication1.presentation.game.ui.PartShips
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.Ships
 import com.example.myapplication1.presentation.game.ui.TakeUI
@@ -109,6 +110,11 @@ class GameViewPlayTwo @JvmOverloads constructor(
         ret=playingField.shotxy(x,y)
         post({ render() })
         return ret
+
+    }
+
+    fun shotaroundshipGVPT (k: MutableList<PartShips>) {
+        playingField.shotaroundship(k)
 
     }
 
