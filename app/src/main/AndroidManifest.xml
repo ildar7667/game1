@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".presentation.gameplay.GamePlay"></activity>
+        <activity android:name=".presentation.gametwoplayer.ActivityGameTwoPlayer"></activity>
+        <activity android:name=".presentation.gameplay.GamePlay" />
         <activity android:name=".presentation.gameoffline.ActivityGameOffline" />
         <activity android:name=".presentation.credentials.ActivityAuth" />
         <activity android:name=".presentation.main.MainActivity">

@@ -2,21 +2,13 @@ package com.example.myapplication1.presentation.game
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import android.widget.TextView
-import androidx.core.view.isVisible
-import com.example.myapplication1.R
 import com.example.myapplication1.presentation.game.model.GameState
 import com.example.myapplication1.presentation.game.ui.PartShips
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.Ships
-import kotlinx.android.synthetic.main.gameoffline.*
-import kotlinx.android.synthetic.main.gameoffline.view.*
 import com.example.myapplication1.presentation.game.ui.TakeUI
-import com.example.myapplication1.presentation.gameoffline.GameOfflineFragment
-import com.example.myapplication1.presentation.gameplay.GameViewPlayTwo
 import kotlin.math.min
 
 class GameView @JvmOverloads constructor(
@@ -58,16 +50,9 @@ class GameView @JvmOverloads constructor(
         playingField.setshipsx(2,3)
         playingField.setshipsx(3,2)
         playingField.setshipsx(4,1)
-        //super.onAttachedToWindow()
-        //GameView(gameView.context).onAttachedToWindow()
-        //super.onAttachedToWindow()
-       // render()
-       // TextViewGV.text="ghjfg"
+
 
         post({ render() })
-
-      // val textss: TextView = findViewById(R.id.TextViewGV) as TextView
-       // text.setText("size")
 
             }
 

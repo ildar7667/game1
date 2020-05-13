@@ -4,13 +4,8 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
-import android.widget.Toast
 import com.example.myapplication1.presentation.game.Const
 import com.example.myapplication1.presentation.game.model.GameState
-import com.example.myapplication1.presentation.gameplay.GamePlay
-import com.example.myapplication1.presentation.gameplay.GameViewPlayTwo
-import com.example.myapplication1.presentation.gameplay.StateGame
-import kotlinx.android.synthetic.main.gameoffline.*
 import kotlin.random.Random
 
 
@@ -177,21 +172,12 @@ class PlayingFieldUI : IElementUI {
 
                 listShips.add(Ships(1, 1, listpart))
 
-                //   k++
 
-                //    val listpart = listOf(PartShips (x,y,1),PartShips (x,y+1,1),PartShips (x,y+2,1),PartShips (x,y+3,1))
-                //   val shipsfour = Ships(4, 1,listpart )
             }
+       else takes[i].state = 0
 
-        //for (i in 0..(listShips.size-1)){
-        //   takes[i].state=3
-
-       // }
-
-    //StateGame.listShipsfin= listShips
         k=listShips.size
         return listShips
-        //listShips.size
 
     }
 

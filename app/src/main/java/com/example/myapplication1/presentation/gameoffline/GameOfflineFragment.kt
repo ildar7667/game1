@@ -1,32 +1,17 @@
 package com.example.myapplication1.presentation.gameoffline
 
-import android.content.Context
-import android.graphics.Canvas
 import android.os.Bundle
-import android.view.Gravity
 import android.view.MotionEvent
-import android.view.SurfaceView
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.view.isVisible
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.myapplication1.Base.ABaseFragment
 import com.example.myapplication1.R
 import com.example.myapplication1.domain.di.components.DaggerAppComponent
-import com.example.myapplication1.presentation.game.GameView
 import com.example.myapplication1.presentation.game.ui.Gamer
-import com.example.myapplication1.presentation.game.ui.PartShips
-import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.Ships
-import com.example.myapplication1.presentation.gameplay.GamePlay
-import com.example.myapplication1.presentation.gameplay.GameViewPlayTwo
-import com.example.myapplication1.presentation.gameplay.StateGame
-import com.example.myapplication1.presentation.main.MainActivity
-import kotlinx.android.synthetic.main.activity_game_play.*
 import kotlinx.android.synthetic.main.gameoffline.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -108,6 +93,8 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
     private fun onClick(x: Float, y: Float): Boolean {
 
         gameView.stek=1
+
+        //if (gameViewPlayTwo.isVisible)
         when (gameView.onClick(x,y))
         {
             1 -> luckyshotgV (x,y)
@@ -141,7 +128,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
         var x: Int = 0
         var y: Int = 0
 
-
+        if (gameViewPlayTwo.isVisible)
         do {   x = randome.nextInt(10)
                y = randome.nextInt(10)
 
@@ -151,7 +138,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
             if (result==1)
                if (luckyshotgVPT(x,y)!=true) //если корабль не убит
-               {
+               {/*
                    a = x
                    b = y
                    len = 1
@@ -185,7 +172,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
                                len = 2
                                 }
                    }
-
+*/
                }
             /*
                 else {
@@ -206,33 +193,6 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
             } while (result==4 || result==3 || result==1)
 
-
-
-       /* if (result==1) //попал в корабль, добавить проверку если корабль не убит сразу
-        {   a=x
-            b=y
-            len=1
-
-            if (vec==0)
-            {when (randome.nextInt(4))
-                 { 0-> {}
-
-                 }
-
-            }
-
-        }*/
-      //  else
-        /*{
-
-            if (vec==0)
-                when (randome.nextInt(3))
-                {
-
-
-                }
-
-        }*/
 
 
     }

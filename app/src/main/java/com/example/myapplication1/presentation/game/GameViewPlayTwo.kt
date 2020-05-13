@@ -1,4 +1,4 @@
-package com.example.myapplication1.presentation.gameplay
+package com.example.myapplication1.presentation.game
 
 import android.content.Context
 import android.graphics.Canvas
@@ -6,15 +6,10 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import com.example.myapplication1.presentation.game.GameView
-import com.example.myapplication1.presentation.game.model.GameState
 import com.example.myapplication1.presentation.game.ui.PartShips
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.Ships
 import com.example.myapplication1.presentation.game.ui.TakeUI
-import kotlinx.android.synthetic.main.gameoffline.*
-import kotlinx.android.synthetic.main.gameoffline.view.*
-import java.util.concurrent.TimeUnit
 import kotlin.math.min
 
 class GameViewPlayTwo @JvmOverloads constructor(
@@ -25,7 +20,8 @@ class GameViewPlayTwo @JvmOverloads constructor(
     override fun surfaceDestroyed(p0: SurfaceHolder?) { }
     override fun surfaceCreated(p0: SurfaceHolder?) { render() }
 
-    private val playingField = PlayingFieldUI()
+    private val playingField =
+        PlayingFieldUI()
 
     var onSelectListener: ((TakeUI) -> Unit)? = null
     var stek:Int = 0
@@ -58,7 +54,14 @@ class GameViewPlayTwo @JvmOverloads constructor(
         post({ render() })
     }
 
+    fun scanships(): MutableList<Ships>{
+        var listshig : MutableList<Ships>
+        var k:Int
+        listshig=playingField.scanshipsx()
 
+        post({ render() })
+        return listshig
+    }
 
 
     fun render() {

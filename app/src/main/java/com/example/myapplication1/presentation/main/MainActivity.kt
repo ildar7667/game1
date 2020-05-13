@@ -7,6 +7,7 @@ import com.example.myapplication1.R
 import com.example.myapplication1.presentation.App
 import com.example.myapplication1.presentation.credentials.ActivityAuth
 import com.example.myapplication1.presentation.gameoffline.ActivityGameOffline
+import com.example.myapplication1.presentation.gametwoplayer.ActivityGameTwoPlayer
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -51,6 +52,11 @@ class MainActivity : AppCompatActivity() {
         //   .commit()
 
         /*запуск через новое активити*/
+
+        btn_2game.setOnClickListener() {
+            ActivityGameTwoPlayer.show()
+
+        }
 
         button_auth.setOnClickListener() {
            ActivityAuth.show()
