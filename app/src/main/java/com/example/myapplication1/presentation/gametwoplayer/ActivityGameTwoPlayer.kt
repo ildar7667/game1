@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
+import android.widget.TextView
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.example.myapplication1.Base.ABaseActivity
@@ -60,51 +61,37 @@ class ActivityGameTwoPlayer : ABaseActivity(), IActivityGameTwoPlayer  {
         butgame1.setOnClickListener(){
             gameView2.scanships()
             gameView2.setsh()
-
-
         }
 
         butgame2.setOnClickListener {
-
-
+            if (nextmove>2) {
+                butgame2.isVisible=false
+                funnextmove()
+                //textView.isVisible=true
+            }
 
             if (nextmove==2) {
                 gamer2.ships = gameView2.scanships()
-
-
-              //  gameViewPlayTwo.isVisible=true
-
                 gameViewPlayTwo2.isVisible=true
                 gameViewPlayTwo2.ident(gamer1.ships)
                 gameView2.hiddenships(gamer2.ships)
                 butgame1.isVisible=false
                 butgame2.isVisible=false
+                textView.text="Игрок 1"
                 nextmove++
-
             }
 
             if (nextmove==1)
             {gamer1.ships=gameView2.scanships()
                 nextmove=2
                 butgame2.text="в бой"
-
-
+                textView.text="Игрок 2"
             }
-
-
-
         }
-
-
-
     }
 
     private fun onClick(x: Float, y: Float): Boolean {
-
         gameView2.stek=1
-
-        //if (gameViewPlayTwo.isVisible)
-
         when (nextmove%2) {
             1 -> {gamer1shot.add(gameView2.xyfloattoint(x,y))
                 when (gameView2.onClick(x, y)) {
@@ -112,110 +99,72 @@ class ActivityGameTwoPlayer : ABaseActivity(), IActivityGameTwoPlayer  {
                     2 -> fall()
                 }
                   }
-
-
             0 -> {gamer2shot.add(gameView2.xyfloattoint(x,y))
                 when (gameView2.onClick(x, y)) {
                 1 -> luckyshotgV(gamer1, gameView2.xyfloattoint(x,y).first, gameView2.xyfloattoint(x,y).second)
                 2 -> fall()
             }}
         }
-
         return true
     }
 
     fun luckyshotgV (gamer:Gamer, x:Int,y:Int) {
+        gamer.shotondeck(x,y) //палуба x,y получает state = 0
+        if (gamer.chekkillship(gamer.ships[gamer.numbership(x,  y).first])) //если убит корабль, с координатами x y
+        gameView2.shotaroundshipGV(gamer.ships[gamer.numbership(x, y).first].part)  //то расстреляны соседние ячейки
 
-        gamer.ships[numbership(gamer.ships, x,  y).first].part[numbership(gamer.ships, x,y).second].state=0
-        if  (chekkilledship(gamer.ships[numbership(gamer.ships, x,  y).first]))
-            gameView2.shotaroundshipGV(gamer.ships[numbership(gamer.ships, x,  y ).first].part)
-
-        //if (chekkilledgamer(gamer2))
-        // {gameViewPlayTwo.isVisible=false
-        //     gameView.isVisible=false
-        //}
-    }
-
-    fun numbership (listship: MutableList<Ships>, x:Int, y:Int) :Pair <Int, Int> { //возвращает номер корабля, по которому попал выстрел от 0 по 9. И номер палубы
-        var shotship:Int=0
-        var shotpart:Int=0
-
-        for (i in (0..listship.size-1))
-            for (j in 0..(listship[i].part.size-1))
-                if ((listship[i].part[j].x==x) && (listship[i].part[j].y==y))
-                {shotship=i
-                    shotpart=j
-                    //listship[i].part[j].state=0
-                }
-        return Pair(shotship, shotpart)
-    }
-
-    fun chekkilledship (ship: Ships):Boolean{ //проверяет убит ли корабль, true- убит
-        var  n: Int=0
-        for (i in 0..(ship.part.size-1))
-            if  (ship.part[i].state==0)
-                n++
-
-        if (ship.part.size==n)
-        {
-            ship.state=0
-            return true
-        }
-
-        return false
-
+        textView3.text=gamer2.schet().toString()+":"+gamer1.schet().toString()
     }
 
     fun fall(){
         nextmove++
         gameViewPlayTwo2.scanships()
         gameView2.scanships()
+        butgame2.isVisible=true
+        textView.text="--"
+    }
+
+    fun funnextmove () {
         when (nextmove%2){
-            1-> {
+            1-> {textView.text="Игрок 1"
                 gameViewPlayTwo2.ident(gamer1.ships)
                 gameView2.hiddenships(gamer2.ships)
                 for (i in 0..(gamer1shot.size-1)) {
-                 if (gameView2.shotsquare(gamer1shot[i].first,gamer1shot[i].second)==1)
-                 {luckyshotgV (gamer2, gamer1shot[i].first,gamer1shot[i].second)
-
-                 }
-                   }
+                    if (gameView2.shotsquare(gamer1shot[i].first,gamer1shot[i].second)==1)
+                    luckyshotgV (gamer2, gamer1shot[i].first,gamer1shot[i].second)
+                }
                 for (i in 0..(gamer2shot.size-1)) {
                     if (gameViewPlayTwo2.shotsquare(gamer2shot[i].first,gamer2shot[i].second)==1)
                     {luckyshotgVPT (gamer1, gamer2shot[i].first,gamer2shot[i].second)
-
                     }
                 }
             }
-           0-> {gameViewPlayTwo2.ident(gamer2.ships)
+            0-> {textView.text="Игрок 2"
+                gameViewPlayTwo2.ident(gamer2.ships)
                 gameView2.hiddenships(gamer1.ships)
-               for (i in 0..(gamer2shot.size-1)) {
-                   if (gameView2.shotsquare(gamer2shot[i].first,gamer2shot[i].second)==1)
-                   {luckyshotgV (gamer1, gamer2shot[i].first,gamer2shot[i].second)
-
-                   }
-               }
-               for (i in 0..(gamer1shot.size-1)) {
-                   if (gameViewPlayTwo2.shotsquare(gamer1shot[i].first,gamer1shot[i].second)==1)
-                   {luckyshotgVPT (gamer2, gamer1shot[i].first,gamer1shot[i].second)
-
-                   }
-               }
-
-
-
-           }
+                for (i in 0..(gamer2shot.size-1)) {
+                    if (gameView2.shotsquare(gamer2shot[i].first,gamer2shot[i].second)==1)
+                    luckyshotgV (gamer1, gamer2shot[i].first,gamer2shot[i].second)
+                }
+                for (i in 0..(gamer1shot.size-1)) {
+                    if (gameViewPlayTwo2.shotsquare(gamer1shot[i].first,gamer1shot[i].second)==1)
+                    {luckyshotgVPT (gamer2, gamer1shot[i].first,gamer1shot[i].second)
+                    }
+                }
+            }
         }
-
     }
+
 
     fun luckyshotgVPT (gamer:Gamer, x:Int,y:Int):Boolean {
+        gamer.shotondeck(x,y) //палуба x,y получает state = 0
+        if (gamer.chekkillship(gamer.ships[gamer.numbership(x,  y).first])) //если убит корабль, с координатами x y,
+        gameViewPlayTwo2.shotaroundshipGVPT(gamer.ships[gamer.numbership(x,y).first].part)   //то расстреляны соседние ячейки
 
-        gamer.ships[numbership(gamer.ships, x, y).first].part[numbership(gamer.ships, x,y).second].state=0
-        if  (chekkilledship(gamer.ships[numbership(gamer.ships, x,y ).first])) //если убит корабль, то расстреляны соседние ячейки
-            gameViewPlayTwo2.shotaroundshipGVPT(gamer.ships[numbership(gamer.ships, x,y).first].part)
-        return chekkilledship(gamer.ships[numbership(gamer.ships, x,y ).first])
+        return gamer.chekkillship(gamer.ships[gamer.numbership(x,  y).first])
     }
+
+
 
    /* override fun showGameOffline() {
         replace(GameOfflineFragment())

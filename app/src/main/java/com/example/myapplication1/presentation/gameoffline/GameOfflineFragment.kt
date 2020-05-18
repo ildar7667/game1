@@ -70,31 +70,25 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
         butscan.setOnClickListener{
 
-           // k1=gameView.scanships()
-
             gamer1.ships=gameView.scanships()
 
             gameViewPlayTwo.isVisible=true
             gameViewPlayTwo.ident(gamer1.ships)
 
             gameView.setsh()
-
             gamer2.ships=gameView.scanships()
             gameView.hiddenships(gamer2.ships)
 
             butgameoffline.isVisible=false
             butscan.isVisible=false
-
         }
     }
 
 
 
     private fun onClick(x: Float, y: Float): Boolean {
-
         gameView.stek=1
 
-        //if (gameViewPlayTwo.isVisible)
         when (gameView.onClick(x,y))
         {
             1 -> luckyshotgV (x,y)
@@ -104,23 +98,23 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
     }
 
     fun luckyshotgV (x:Float,y:Float) {
+        var xx:Int=gameView.xyfloattoint(x,y).first
+        var yy:Int=gameView.xyfloattoint(x,y).second
 
-        gamer2.ships[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first].part[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).second].state=0
-        if  (chekkilledship(gamer2.ships[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first]))
-            gameView.shotaroundshipGV(gamer2.ships[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first].part)
+        gamer2.shotondeck(xx,yy)
+        //gamer2.ships[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first].part[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).second].state=0
+        if (gamer2.chekkillship(gamer2.ships[gamer2.numbership(xx,yy).first]))
+        gameView.shotaroundshipGV(gamer2.ships[gamer2.numbership(xx,yy).first].part)
 
-        //if (chekkilledgamer(gamer2))
-       // {gameViewPlayTwo.isVisible=false
-       //     gameView.isVisible=false
-        //}
-    }
+     }
 
     fun luckyshotgVPT (x:Int,y:Int):Boolean {
 
-        gamer1.ships[numbership(gamer1.ships, x, y).first].part[numbership(gamer1.ships, x,y).second].state=0
-        if  (chekkilledship(gamer1.ships[numbership(gamer1.ships, x,y ).first])) //если убит корабль, то расстреляны соседние ячейки
-            gameViewPlayTwo.shotaroundshipGVPT(gamer1.ships[numbership(gamer1.ships, x,y).first].part)
-        return chekkilledship(gamer1.ships[numbership(gamer1.ships, x,y ).first])
+        gamer1.shotondeck(x,y)  //присваивает палубе с координатами x y state=0
+
+        if  (gamer1.chekkillship(gamer1.ships[gamer1.numbership(x,y).first])) //если убит корабль, то расстреляны соседние ячейки
+            gameViewPlayTwo.shotaroundshipGVPT(gamer1.ships[gamer1.numbership(x,y).first].part)
+        return gamer1.chekkillship(gamer1.ships[gamer1.numbership(x,y).first])
     }
 
     fun fall(){
@@ -196,37 +190,6 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
 
     }
-
-    fun numbership (listship: MutableList<Ships>, x:Int, y:Int) :Pair <Int, Int> { //возвращает номер корабля, по которому попал выстрел от 0 по 9. И номер палубы
-        var shotship:Int=0
-        var shotpart:Int=0
-
-            for (i in (0..listship.size-1))
-            for (j in 0..(listship[i].part.size-1))
-                if ((listship[i].part[j].x==x) && (listship[i].part[j].y==y))
-                {shotship=i
-                    shotpart=j
-                 //listship[i].part[j].state=0
-                }
-      return Pair(shotship, shotpart)
-    }
-
-    fun chekkilledship (ship: Ships):Boolean{ //проверяет убит ли корабль, true- убит
-        var  n: Int=0
-        for (i in 0..(ship.part.size-1))
-            if  (ship.part[i].state==0)
-        n++
-
-        if (ship.part.size==n)
-        {
-            ship.state=0
-            return true
-        }
-
-      return false
-
-      }
-
 
     fun chekkilledgamer (gamer: Gamer):Boolean {
         var n=0
