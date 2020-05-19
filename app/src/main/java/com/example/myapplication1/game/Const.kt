@@ -1,4 +1,4 @@
-package com.example.myapplication1.presentation.game
+package com.example.myapplication1.game
 
 object Const {
     const val SELECT_TYPE_ZERO = 0

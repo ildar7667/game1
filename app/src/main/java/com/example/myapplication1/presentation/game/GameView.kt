@@ -4,7 +4,7 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import com.example.myapplication1.presentation.game.model.GameState
+import com.example.myapplication1.game.model.GameState
 import com.example.myapplication1.presentation.game.ui.PartShips
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.Ships

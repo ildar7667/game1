@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import com.example.myapplication1.presentation.game.model.GameState
 import com.example.myapplication1.presentation.game.ui.PlayingFieldUI
 import com.example.myapplication1.presentation.game.ui.TakeUI
 import kotlin.math.min

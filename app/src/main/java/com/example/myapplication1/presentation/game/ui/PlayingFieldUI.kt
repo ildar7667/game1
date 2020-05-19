@@ -4,8 +4,8 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
-import com.example.myapplication1.presentation.game.Const
-import com.example.myapplication1.presentation.game.model.GameState
+import com.example.myapplication1.game.Const
+import com.example.myapplication1.game.model.GameState
 import kotlin.random.Random
 
 

@@ -102,7 +102,6 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
         var yy:Int=gameView.xyfloattoint(x,y).second
 
         gamer2.shotondeck(xx,yy)
-        //gamer2.ships[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).first].part[numbership(gamer2.ships, gameView.xyfloattoint(x,y).first,  gameView.xyfloattoint(x,y).second ).second].state=0
         if (gamer2.chekkillship(gamer2.ships[gamer2.numbership(xx,yy).first]))
         gameView.shotaroundshipGV(gamer2.ships[gamer2.numbership(xx,yy).first].part)
 
@@ -114,7 +113,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
         if  (gamer1.chekkillship(gamer1.ships[gamer1.numbership(x,y).first])) //если убит корабль, то расстреляны соседние ячейки
             gameViewPlayTwo.shotaroundshipGVPT(gamer1.ships[gamer1.numbership(x,y).first].part)
-        return gamer1.chekkillship(gamer1.ships[gamer1.numbership(x,y).first])
+        return gamer1.chekkillship(gamer1.ships[gamer1.numbership(x,y).first])   //возвращает true, если убит корабль полностью
     }
 
     fun fall(){

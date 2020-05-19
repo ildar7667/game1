@@ -1,4 +1,4 @@
-package com.example.myapplication1.presentation.game.model
+package com.example.myapplication1.game.model
 
 data class GamePlayer(
 
