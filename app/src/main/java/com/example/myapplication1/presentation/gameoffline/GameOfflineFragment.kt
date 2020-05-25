@@ -11,6 +11,7 @@ import com.example.myapplication1.R
 import com.example.myapplication1.domain.di.components.DaggerAppComponent
 import com.example.myapplication1.presentation.game.ui.Gamer
 import com.example.myapplication1.presentation.game.ui.Ships
+import kotlinx.android.synthetic.main.activity_game_two_player.*
 import kotlinx.android.synthetic.main.gameoffline.*
 import javax.inject.Inject
 import kotlin.random.Random
@@ -32,8 +33,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
     override fun getViewId() = R.layout.gameoffline
 
-   // var k1  = mutableListOf<Ships>()
-    //var k2  = mutableListOf<Ships>()
+
     var gamer1 = Gamer(1, mutableListOf<Ships>())
     var gamer2 = Gamer(1, mutableListOf<Ships>())
 
@@ -98,22 +98,35 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
     }
 
     fun luckyshotgV (x:Float,y:Float) {
-        var xx:Int=gameView.xyfloattoint(x,y).first
-        var yy:Int=gameView.xyfloattoint(x,y).second
+        var xx: Int = gameView.xyfloattoint(x, y).first
+        var yy: Int = gameView.xyfloattoint(x, y).second
 
-        gamer2.shotondeck(xx,yy)
-        if (gamer2.chekkillship(gamer2.ships[gamer2.numbership(xx,yy).first]))
-        gameView.shotaroundshipGV(gamer2.ships[gamer2.numbership(xx,yy).first].part)
-
-     }
+        gamer2.shotondeck(xx, yy)
+        if (gamer2.chekkillshipxy(xx, yy)) {
+            gameView.shotaroundshipGV(gamer2.ships[gamer2.numbership(xx, yy).first].part)
+            textView3ofl.text = gamer2.schet().toString() + ":" + gamer1.schet().toString()
+            if (gamer2.schet() == 10) {
+                gameView.isVisible = false
+                gameViewPlayTwo.isVisible = false
+                textViewofl.text="Игрок 1 - Android"
+            }
+        }
+    }
 
     fun luckyshotgVPT (x:Int,y:Int):Boolean {
 
         gamer1.shotondeck(x,y)  //присваивает палубе с координатами x y state=0
 
-        if  (gamer1.chekkillship(gamer1.ships[gamer1.numbership(x,y).first])) //если убит корабль, то расстреляны соседние ячейки
-            gameViewPlayTwo.shotaroundshipGVPT(gamer1.ships[gamer1.numbership(x,y).first].part)
-        return gamer1.chekkillship(gamer1.ships[gamer1.numbership(x,y).first])   //возвращает true, если убит корабль полностью
+        if  (gamer1.chekkillshipxy(x,y))      // если убит корабль, то расстреляны соседние ячейки
+        {gameViewPlayTwo.shotaroundshipGVPT(gamer1.ships[gamer1.numbership(x,y).first].part)
+            textView3ofl.text=gamer2.schet().toString()+":"+gamer1.schet().toString()
+            if (gamer1.schet()==10)
+            {gameView.isVisible=false
+                gameViewPlayTwo.isVisible=false
+                textViewofl.text="Игрок 1 - Android"
+            }
+        }
+        return gamer1.chekkillshipxy(x,y)     //  возвращает true, если убит корабль полностью
     }
 
     fun fall(){
@@ -127,47 +140,51 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
 
             // TimeUnit.SECONDS.sleep(1)
             // Thread.sleep(2000)
-                result=gameViewPlayTwo.shotsquare(x, y)
+            result=gameViewPlayTwo.shotsquare(x, y)
 
             if (result==1)
-               if (luckyshotgVPT(x,y)!=true) //если корабль не убит
-               {/*
-                   a = x
-                   b = y
-                   len = 1
-                   if (a - 1 != -1) {
-                       result = gameViewPlayTwo.shotsquare(a - 1, b)
-                       if (result == 1) {
-                           vec = 4 //влево
-                           len = 2
+                if (luckyshotgVPT(x, y) != true) //если корабль не убит, то Android убивает его)
+                {  a=x
+                    b=y
+                    //gameViewPlayTwo.shotaroundshipGVPT(gamer1.ships[gamer1.numbership(x,y).first].part)
 
-                         }
+                   for (i in 0..gamer1.ships[gamer1.numbership(x,y).first].part.size-1)
+                    luckyshotgVPT (gamer1.ships[gamer1.numbership(x,y).first].part[i].x, gamer1.ships[gamer1.numbership(x,y).first].part[i].y)
 
-                         }
-                         else if (a+1!=10 || result==2) { //попал повторно в пусто поле
-                       result = gameViewPlayTwo.shotsquare(a + 1, b)
-                       if (result == 1) {
-                           vec = 2 //вправо
-                           len = 2
-                               }
-                            }
-                                 else if (b+1!=10 || result==2) { //попал повторно в пусто поле
-                       result = gameViewPlayTwo.shotsquare(a , b+1)
-                       if (result == 1) {
-                           vec = 3 //вниз
-                           len = 2
-                       }
-                   }
-                              else if (b-1!=-1 || result==2) { //попал повторно в пусто поле
-                               result = gameViewPlayTwo.shotsquare(a , b-1)
-                              if (result == 1) {
-                               vec = 1 //вверх
-                               len = 2
-                                }
-                   }
-*/
-               }
-            /*
+
+
+                   /* a = x
+                    b = y
+                    len = 1
+                    if (a - 1 != -1) {
+                        result = gameViewPlayTwo.shotsquare(a - 1, b)
+                        if (result == 1) {
+                            vec = 4 //влево
+                            len = 2
+
+                        }
+
+                    } else if (a + 1 != 10 || result == 2) { //попал повторно в пусто поле
+                        result = gameViewPlayTwo.shotsquare(a + 1, b)
+                        if (result == 1) {
+                            vec = 2 //вправо
+                            len = 2
+                        }
+                    } else if (b + 1 != 10 || result == 2) { //попал повторно в пусто поле
+                        result = gameViewPlayTwo.shotsquare(a, b + 1)
+                        if (result == 1) {
+                            vec = 3 //вниз
+                            len = 2
+                        }
+                    } else if (b - 1 != -1 || result == 2) { //попал повторно в пусто поле
+                        result = gameViewPlayTwo.shotsquare(a, b - 1)
+                        if (result == 1) {
+                            vec = 1 //вверх
+                            len = 2
+                        }
+                    }*/
+
+                    /*
                 else {
                       a=x
                       b=y
@@ -184,6 +201,7 @@ class GameOfflineFragment: ABaseFragment(), IGameOfflineView {
             }
               */
 
+            }
             } while (result==4 || result==3 || result==1)
 
 

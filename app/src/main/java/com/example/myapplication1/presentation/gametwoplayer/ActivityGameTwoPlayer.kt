@@ -110,10 +110,17 @@ class ActivityGameTwoPlayer : ABaseActivity(), IActivityGameTwoPlayer  {
 
     fun luckyshotgV (gamer:Gamer, x:Int,y:Int) {
         gamer.shotondeck(x,y) //палуба x,y получает state = 0
-        if (gamer.chekkillship(gamer.ships[gamer.numbership(x,  y).first])) //если убит корабль, с координатами x y
-        gameView2.shotaroundshipGV(gamer.ships[gamer.numbership(x, y).first].part)  //то расстреляны соседние ячейки
-
+        if (gamer.chekkillshipxy(x,y))//(gamer.ships[gamer.numbership(x,  y).first])) //если убит корабль, с координатами x y
+        {gameView2.shotaroundshipGV(gamer.ships[gamer.numbership(x, y).first].part)  //то расстреляны соседние ячейки
         textView3.text=gamer2.schet().toString()+":"+gamer1.schet().toString()
+
+            if (gamer2.schet() == 10 || gamer1.schet() == 10) {
+                gameView2.isVisible = false
+                gameViewPlayTwo2.isVisible = false
+                textView.text="Игрок 1 - Игрок 2"
+            }
+
+        }
     }
 
     fun fall(){
@@ -158,10 +165,10 @@ class ActivityGameTwoPlayer : ABaseActivity(), IActivityGameTwoPlayer  {
 
     fun luckyshotgVPT (gamer:Gamer, x:Int,y:Int):Boolean {
         gamer.shotondeck(x,y) //палуба x,y получает state = 0
-        if (gamer.chekkillship(gamer.ships[gamer.numbership(x,  y).first])) //если убит корабль, с координатами x y,
+        if (gamer.chekkillshipxy(x,y))//(gamer.ships[gamer.numbership(x,  y).first])) если убит корабль, с координатами x y,
         gameViewPlayTwo2.shotaroundshipGVPT(gamer.ships[gamer.numbership(x,y).first].part)   //то расстреляны соседние ячейки
 
-        return gamer.chekkillship(gamer.ships[gamer.numbership(x,  y).first])
+        return gamer.chekkillshipxy(x,y) //gamer.chekkillship(gamer.ships[gamer.numbership(x,  y).first])
     }
 
 

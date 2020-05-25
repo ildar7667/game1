@@ -46,5 +46,10 @@ class Gamer (state:Int, ships: MutableList<Ships>) {
         return false
     }
 
+    fun chekkillshipxy (x:Int, y:Int):Boolean{ //проверяет убит ли корабль с координатами x,y, результат true- убит
+        return (chekkillship(ships[numbership(x,y).first]))
+
+    }
+
 }
 
